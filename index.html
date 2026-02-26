@@ -24,6 +24,7 @@
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; }
         html { scroll-behavior: smooth; }
 
         body {
@@ -122,6 +123,7 @@
             padding-top: 80px;
             padding-bottom: 48px;
             position: relative;
+            overflow: hidden;
         }
         .hero::before {
             content: '';
@@ -331,61 +333,33 @@
         .mailto-link svg { width: 16px; height: 16px; opacity: 0.4; }
 
         .contact-form { }
-        .form-group { margin-bottom: 22px; }
-        .form-group label {
-            display: block;
-            font-size: 10px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            opacity: 0.7;
-        }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0 0 12px;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--border);
+        .mailto-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             color: var(--text-primary);
-            font-family: var(--sans);
-            font-size: 15px;
-            transition: border-color 0.3s;
-            outline: none;
-            border-radius: 0;
-            -webkit-appearance: none;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-bottom-color: var(--text-primary);
-        }
-        .form-group textarea { resize: none; min-height: 100px; }
-        .form-group select option { background: var(--bg); }
-        .form-submit {
-            padding: 14px 0;
-            background: transparent;
-            color: var(--text-primary);
-            border: none;
-            border-bottom: 1px solid var(--text-primary);
+            text-decoration: none;
             font-family: var(--sans);
             font-size: 13px;
             font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--text-primary);
+            transition: all 0.3s;
             width: 100%;
-            text-align: left;
-            display: flex;
-            align-items: center;
             justify-content: space-between;
         }
-        .form-submit:hover { opacity: 0.5; }
-        .form-submit::after { content: "→"; font-size: 18px; letter-spacing: 0; }
+        .mailto-cta:hover { opacity: 0.5; }
+        .mailto-cta::after { content: "→"; font-size: 18px; letter-spacing: 0; }
+        .contact-note {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-top: 20px;
+            opacity: 0.6;
+        }
 
         /* FOOTER */
         footer {
@@ -403,6 +377,12 @@
         body.lang-it .it { display: revert; }
 
         /* RESPONSIVE */
+        @media (max-width: 960px) {
+            .services-list { grid-template-columns: 1fr; }
+            .service-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+            .service-item:nth-child(2) { border-left: none; border-right: none; }
+            .service-item:first-child { border-top: 1px solid var(--border); }
+        }
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             nav .container { padding: 0 20px; }
@@ -431,21 +411,6 @@
                 box-sizing: border-box;
             }
             .logo-item img { max-height: 22px; pointer-events: none; }
-            .service-item {
-                padding: 24px 0;
-                border-bottom: 1px solid var(--border);
-            }
-            .service-item:nth-child(2) {
-                border-left: none;
-                border-right: none;
-            }
-            .service-item:first-child {
-                padding-left: 0;
-                border-top: 1px solid var(--border);
-            }
-            .services-list {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -581,55 +546,21 @@
                         <span class="en">Whether you are an SMB looking to automate for the first time or a large enterprise scaling AI across departments, we would love to hear from you.</span>
                         <span class="it">Che siate una PMI che vuole automatizzare per la prima volta o una grande azienda che sta scalando l'AI tra i dipartimenti, saremo felici di ascoltarvi.</span>
                     </p>
-                    <a href="/cdn-cgi/l/email-protection#8ce4e9e0e0e3ccf8fbe3a2e0e5e1e5f8e9e8" class="mailto-link">
+                    <a href="mailto:hello@two.limited" class="mailto-link">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-                        <span class="__cf_email__" data-cfemail="8ce4e9e0e0e3ccf8fbe3a2e0e5e1e5f8e9e8">[email&#160;protected]</span>
+                        hello@two.limited
                     </a>
                 </div>
-                <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-                    <div class="form-group">
-                        <label>
-                            <span class="en">Full Name</span>
-                            <span class="it">Nome completo</span>
-                        </label>
-                        <input type="text" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            <span class="en">Company</span>
-                            <span class="it">Azienda</span>
-                        </label>
-                        <input type="text" name="company">
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            <span class="en">How can we help?</span>
-                            <span class="it">Come possiamo aiutarvi?</span>
-                        </label>
-                        <select name="service">
-                            <option value="" disabled selected>&mdash;</option>
-                            <option value="process-automation">Process Automation</option>
-                            <option value="marketing-sales">Marketing &amp; Sales AI</option>
-                            <option value="reporting-insights">Reporting &amp; Insights</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            <span class="en">Message</span>
-                            <span class="it">Messaggio</span>
-                        </label>
-                        <textarea name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">
-                        <span class="en">Send Message</span>
-                        <span class="it">Invia Messaggio</span>
-                    </button>
-                </form>
+                <div class="contact-form">
+                    <a href="#" class="mailto-cta" id="meetingMailto">
+                        <span class="en">Book a Meeting</span>
+                        <span class="it">Prenota un Incontro</span>
+                    </a>
+                    <p class="contact-note">
+                        <span class="en">Opens your email client with a pre-filled message. Just add your preferred date and send.</span>
+                        <span class="it">Apre il tuo client email con un messaggio precompilato. Aggiungi la data preferita e invia.</span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -637,7 +568,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Two Limited. <a href="/cdn-cgi/l/email-protection#553d3039393a1521223a7b393c383c213031"><span class="__cf_email__" data-cfemail="98f0fdf4f4f7d8eceff7b6f4f1f5f1ecfdfc">[email&#160;protected]</span></a></p>
+            <p>&copy; 2026 Two Limited. <a href="mailto:hello@two.limited">hello@two.limited</a></p>
         </div>
     </footer>
 
@@ -657,7 +588,26 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
             });
+            updateMailto(lang);
         }
+
+        function updateMailto(lang) {
+            const mailto = document.getElementById('meetingMailto');
+            if (!mailto) return;
+            const email = 'hello@two.limited';
+            let subject, body;
+            if (lang === 'it') {
+                subject = 'Richiesta Incontro – Two Limited';
+                body = `Ciao,\n\nVorrei sapere di più sui vostri servizi di automazione AI e vorrei fissare un incontro.\n\nLa mia disponibilità:\n[INSERISCI QUI LA TUA DATA E ORA PREFERITE]\n\nGrazie,\n[Il tuo nome]\n[La tua azienda]`;
+            } else {
+                subject = 'Meeting Request – Two Limited';
+                body = `Hi there,\n\nI'm interested in learning more about your AI automation services and would like to schedule a meeting.\n\nMy availability:\n[PLEASE ADD YOUR PREFERRED DATE AND TIME HERE]\n\nThank you,\n[Your name]\n[Your company]`;
+            }
+            mailto.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        }
+
+        // Init mailto on load
+        updateMailto('en');
 
         // Scroll-triggered fade-in for service items
         const observer = new IntersectionObserver((entries) => {
