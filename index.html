@@ -252,41 +252,43 @@
             font-size: clamp(28px, 3.5vw, 46px);
             line-height: 1.12;
             letter-spacing: -1px;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             max-width: 700px;
         }
         .section-title em { font-style: italic; color: var(--accent-lime); }
 
         .services-list {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
         }
         .service-item {
-            display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 40px;
-            padding: 28px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
             opacity: 0;
             transform: translateY(16px);
             transition: opacity 0.5s, transform 0.5s;
         }
         .service-item.visible { opacity: 1; transform: translateY(0); }
+        .service-item:nth-child(2) {
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+        .service-item:first-child { padding-left: 0; }
+        .service-item:last-child { padding-right: 0; }
         .service-num {
             font-size: 11px;
             font-weight: 500;
             color: var(--text-secondary);
             letter-spacing: 2px;
-            padding-top: 6px;
             opacity: 0.6;
+            margin-bottom: 20px;
         }
         .service-content h3 {
             font-family: var(--serif);
-            font-size: clamp(20px, 2vw, 28px);
+            font-size: clamp(20px, 2vw, 26px);
             font-weight: 400;
             letter-spacing: -0.3px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             line-height: 1.2;
         }
         .service-content p {
@@ -294,7 +296,6 @@
             font-size: 15px;
             line-height: 1.75;
             font-weight: 300;
-            max-width: 560px;
         }
 
         /* CONTACT */
@@ -417,14 +418,34 @@
                 max-width: 100%;
                 padding-bottom: 8px;
                 scrollbar-width: none;
+                cursor: grab;
+                user-select: none;
+                -webkit-user-select: none;
             }
+            .logos-grid:active { cursor: grabbing; }
             .logos-grid::-webkit-scrollbar { display: none; }
             .logo-item {
-                flex: 0 0 auto;
-                padding: 12px 24px;
+                flex: 0 0 40%;
+                min-width: 40%;
+                padding: 12px 20px;
+                box-sizing: border-box;
             }
-            .logo-item img { max-height: 22px; }
-            .service-item { grid-template-columns: 1fr; gap: 12px; }
+            .logo-item img { max-height: 22px; pointer-events: none; }
+            .service-item {
+                padding: 24px 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .service-item:nth-child(2) {
+                border-left: none;
+                border-right: none;
+            }
+            .service-item:first-child {
+                padding-left: 0;
+                border-top: 1px solid var(--border);
+            }
+            .services-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -651,6 +672,44 @@
         document.querySelectorAll('.service-item').forEach(item => {
             observer.observe(item);
         });
+        /* Drag-to-scroll for logos grid on mobile */
+        const logosGrid = document.querySelector('.logos-grid');
+        if (logosGrid) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let moved = false;
+
+            logosGrid.addEventListener('mousedown', (e) => {
+                isDown = true;
+                moved = false;
+                startX = e.pageX - logosGrid.offsetLeft;
+                scrollLeft = logosGrid.scrollLeft;
+            });
+
+            logosGrid.addEventListener('mouseleave', () => { isDown = false; });
+            logosGrid.addEventListener('mouseup', () => { isDown = false; });
+
+            logosGrid.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - logosGrid.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                logosGrid.scrollLeft = scrollLeft - walk;
+                moved = true;
+            });
+
+            /* Prevent clicks on logos when dragging */
+            logosGrid.addEventListener('click', (e) => {
+                if (moved) e.preventDefault();
+            });
+
+            /* Touch drag — works alongside native scroll */
+            logosGrid.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX - logosGrid.offsetLeft;
+                scrollLeft = logosGrid.scrollLeft;
+            }, { passive: true });
+        }
     </script>
 </body>
 </html>
