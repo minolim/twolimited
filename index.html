@@ -563,11 +563,11 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Two Limited. <a href="/cdn-cgi/l/email-protection#fb939e979794bb8f8c94d5979296928f9e9f"><span class="__cf_email__" data-cfemail="c6aea3aaaaa986b2b1a9e8aaafabafb2a3a2">[email&#160;protected]</span></a></p>
+            <p>&copy; 2026 Two Limited. <a href="mailto:hello@two.limited">hello@two.limited</a></p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Nav: transparent at top, appears on scroll
         const navEl = document.querySelector('nav');
         window.addEventListener('scroll', () => {
@@ -583,7 +583,7 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
             });
-            const csLink = document.getElementById('csLink');
+            var csLink = document.getElementById('csLink');
             if (csLink) csLink.href = 'case-studies.html' + (lang === 'it' ? '?lang=it' : '');
             updateMailto(lang);
         }
@@ -603,31 +603,28 @@
             mailto.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
         }
 
-        // Init
+        // Init mailto on load
         updateMailto('en');
-        // Read lang from URL (when coming back from case studies)
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('lang') === 'it') { setLang('it'); }
 
         // Scroll-triggered fade-in for service items (progressive enhancement)
-        if ('IntersectionObserver' in window && window.innerHeight < document.body.scrollHeight) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+        if ('IntersectionObserver' in window) {
+            var sObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+                        sObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.15 });
 
-            document.querySelectorAll('.service-item').forEach(item => {
+            document.querySelectorAll('.service-item').forEach(function(item) {
                 item.classList.add('animate-ready');
-                observer.observe(item);
+                sObserver.observe(item);
             });
 
-            // Fallback: make visible after 2s in case observer never fires
-            setTimeout(() => {
-                document.querySelectorAll('.service-item').forEach(item => {
+            // Fallback: ensure visible after 2s
+            setTimeout(function() {
+                document.querySelectorAll('.service-item').forEach(function(item) {
                     item.classList.add('visible');
                 });
             }, 2000);
@@ -665,4 +662,15 @@
             });
 
             /* Touch drag — works alongside native scroll */
-            logo
+            logosGrid.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX - logosGrid.offsetLeft;
+                scrollLeft = logosGrid.scrollLeft;
+            }, { passive: true });
+        }
+
+        // Read lang from URL (when navigating back from case studies)
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('lang') === 'it') { setLang('it'); }
+    </script>
+</body>
+</html>
