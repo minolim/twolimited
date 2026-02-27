@@ -423,10 +423,7 @@
         <div class="container">
             <a href="#" class="logo">t<em>w</em>o</a>
             <div class="nav-right">
-                <a href="case-studies.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:400;transition:color 0.3s">
-                    <span class="en">Case Studies</span>
-                    <span class="it">Casi Studio</span>
-                </a>
+                <a href="case-studies.html" id="csLink" style="color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:400;transition:color 0.3s">Case Studies</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('it')">IT</button>
@@ -456,10 +453,6 @@
                         <span class="en">Get in touch</span>
                         <span class="it">Contattaci</span>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="case-studies.html" class="btn-secondary">
-                        <span class="en">Case Studies</span>
-                        <span class="it">Casi Studio</span>
                     </a>
                 </div>
             </div>
@@ -570,11 +563,11 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Two Limited. <a href="mailto:hello@two.limited">hello@two.limited</a></p>
+            <p>&copy; 2026 Two Limited. <a href="/cdn-cgi/l/email-protection#fb939e979794bb8f8c94d5979296928f9e9f"><span class="__cf_email__" data-cfemail="c6aea3aaaaa986b2b1a9e8aaafabafb2a3a2">[email&#160;protected]</span></a></p>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Nav: transparent at top, appears on scroll
         const navEl = document.querySelector('nav');
         window.addEventListener('scroll', () => {
@@ -590,6 +583,8 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
             });
+            const csLink = document.getElementById('csLink');
+            if (csLink) csLink.href = 'case-studies.html' + (lang === 'it' ? '?lang=it' : '');
             updateMailto(lang);
         }
 
@@ -608,8 +603,11 @@
             mailto.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
         }
 
-        // Init mailto on load
+        // Init
         updateMailto('en');
+        // Read lang from URL (when coming back from case studies)
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('lang') === 'it') { setLang('it'); }
 
         // Scroll-triggered fade-in for service items (progressive enhancement)
         if ('IntersectionObserver' in window && window.innerHeight < document.body.scrollHeight) {
@@ -667,11 +665,4 @@
             });
 
             /* Touch drag — works alongside native scroll */
-            logosGrid.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].pageX - logosGrid.offsetLeft;
-                scrollLeft = logosGrid.scrollLeft;
-            }, { passive: true });
-        }
-    </script>
-</body>
-</html>
+            logo

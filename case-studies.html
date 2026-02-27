@@ -82,6 +82,46 @@
         .stat-number em { font-style:italic; color:var(--accent-lime); }
         .stat-label { font-size:13px; color:var(--text-muted); font-weight:400; line-height:1.4; }
 
+        /* PROCESS DIAGRAMS */
+        .process-diagram { margin:28px 0 8px; }
+        .process-diagram-label { font-size:10px; text-transform:uppercase; letter-spacing:2px; font-weight:600; margin-bottom:16px; }
+        .process-diagram-label.before { color:#C45C4A; }
+        .process-diagram-label.after { color:var(--accent-lime); }
+        .process-flow { display:flex; align-items:center; gap:0; flex-wrap:wrap; padding:28px 32px; border-radius:14px; border:1px solid var(--border); position:relative; }
+        .process-flow.chaos { background:rgba(196,92,74,0.04); border-color:rgba(196,92,74,0.15); }
+        .process-flow.clean { background:rgba(184,217,0,0.04); border-color:rgba(184,217,0,0.18); }
+        .pf-node { display:flex; flex-direction:column; align-items:center; gap:6px; min-width:80px; flex:0 0 auto; padding:0 4px; }
+        .pf-icon { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; }
+        .chaos .pf-icon { background:rgba(196,92,74,0.1); }
+        .clean .pf-icon { background:rgba(184,217,0,0.12); }
+        .pf-label { font-size:10px; color:var(--text-secondary); text-align:center; line-height:1.3; max-width:90px; }
+        .pf-arrow { color:var(--text-muted); font-size:18px; margin:0 6px; opacity:0.35; flex-shrink:0; }
+        .chaos .pf-arrow { color:#C45C4A; opacity:0.4; }
+        .clean .pf-arrow { color:var(--accent-lime); opacity:0.5; }
+        .pf-hub { display:flex; flex-direction:column; align-items:center; gap:6px; padding:0 12px; }
+        .pf-hub-icon { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:700; border:2px solid; }
+        .chaos .pf-hub-icon { background:rgba(196,92,74,0.08); border-color:rgba(196,92,74,0.2); color:#C45C4A; }
+        .clean .pf-hub-icon { background:rgba(184,217,0,0.1); border-color:rgba(184,217,0,0.3); color:#8BA600; }
+        .pf-hub-label { font-size:10px; font-weight:600; text-align:center; line-height:1.3; }
+        .chaos .pf-hub-label { color:#C45C4A; }
+        .clean .pf-hub-label { color:#8BA600; }
+        .pf-brace { display:flex; flex-direction:column; align-items:center; gap:4px; margin:0 10px; }
+        .pf-brace-line { width:2px; height:20px; border-radius:1px; }
+        .chaos .pf-brace-line { background:rgba(196,92,74,0.2); }
+        .clean .pf-brace-line { background:rgba(184,217,0,0.25); }
+        .pf-scattered { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; flex:1; }
+        .pf-scattered .pf-node { min-width:auto; }
+        .pf-outputs { display:flex; flex-direction:column; gap:8px; }
+        .pf-outputs .pf-node { flex-direction:row; min-width:auto; gap:8px; }
+        .pf-outputs .pf-icon { width:36px; height:36px; border-radius:8px; font-size:14px; }
+        .pf-outputs .pf-label { text-align:left; font-size:10px; }
+        @media (max-width:768px) {
+            .process-flow { flex-direction:column; align-items:stretch; padding:20px; }
+            .pf-arrow { transform:rotate(90deg); margin:8px auto; }
+            .pf-scattered { grid-template-columns:repeat(2,1fr); }
+            .pf-outputs { flex-direction:row; flex-wrap:wrap; gap:12px; }
+        }
+
         .what-we-automated { padding:100px 0; border-top:1px solid var(--border); }
         .section-label { font-size:10px; text-transform:uppercase; letter-spacing:2.5px; color:var(--text-secondary); margin-bottom:12px; font-weight:500; opacity:0.7; }
         .section-title { font-family:var(--serif); font-size:clamp(28px,3.5vw,46px); line-height:1.12; letter-spacing:-1px; margin-bottom:56px; max-width:700px; }
@@ -133,7 +173,7 @@
         <div class="container">
             <a href="index.html" class="logo">t<em>w</em>o</a>
             <div class="nav-right">
-                <a href="index.html" class="nav-link"><span class="en">Home</span><span class="it">Home</span></a>
+                <a href="index.html" id="homeLink" class="nav-link"><span class="en">Home</span><span class="it">Home</span></a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('it')">IT</button>
@@ -278,6 +318,214 @@
         </div>
     </section>
 
+    <!-- NEW: BILLING & FINANCE CASE STUDIES -->
+    <section class="case-studies-grid container" style="padding-top:0">
+
+        <!-- MERIDIAN GROUP — BILLING -->
+        <div class="case-card" onclick="this.classList.toggle('open')">
+            <div class="case-card-header">
+                <div>
+                    <p style="font-family:var(--serif);font-size:22px;letter-spacing:-0.5px;opacity:0.5;margin-bottom:14px"><span class="en">Meridian Group</span><span class="it">Meridian Group</span></p>
+                    <h2 class="case-card-title"><span class="en">From invoice chaos to <em>one-click reconciliation.</em></span><span class="it">Dal caos delle fatture alla <em>riconciliazione in un click.</em></span></h2>
+                    <div class="case-card-tags">
+                        <span class="tag"><span class="en">Invoice Processing</span><span class="it">Elaborazione Fatture</span></span>
+                        <span class="tag"><span class="en">Billing Automation</span><span class="it">Automazione Fatturazione</span></span>
+                        <span class="tag"><span class="en">Supplier Management</span><span class="it">Gestione Fornitori</span></span>
+                        <span class="tag"><span class="en">Data Extraction</span><span class="it">Estrazione Dati</span></span>
+                    </div>
+                </div>
+                <button class="case-card-toggle" aria-label="Expand"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></button>
+            </div>
+            <div class="case-card-body"><div class="case-body-inner"><div class="case-divider"></div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">The Challenge</span><span class="it">La Sfida</span></p>
+                    <h3><span class="en">40+ suppliers, 10 invoice formats, one overwhelmed finance team.</span><span class="it">Pi&ugrave; di 40 fornitori, 10 formati fattura, un team finanziario sommerso.</span></h3>
+                    <p><span class="en">Meridian Group, a mid-market consumer goods company with 180 employees across three countries, was drowning in billing complexity. Every month, their finance team received invoices from over 40 suppliers: some arrived as PDF attachments in email, others as scanned paper documents, some as Excel files with inconsistent column layouts, and a handful through supplier portals that each required separate login credentials.</span><span class="it">Meridian Group, un'azienda di beni di consumo di medie dimensioni con 180 dipendenti in tre paesi, era sommersa dalla complessit&agrave; della fatturazione. Ogni mese, il team finanziario riceveva fatture da oltre 40 fornitori: alcune arrivavano come allegati PDF via email, altre come documenti cartacei scansionati, alcune come file Excel con layout di colonne incoerenti, e un pugno tramite portali fornitori che richiedevano ciascuno credenziali di accesso separate.</span></p>
+                    <p><span class="en">The process was entirely manual. A finance analyst would open each email, download the attachment, visually identify the invoice number, amounts, line items, and tax, then type everything by hand into their accounting system (Xero). Purchase orders lived in a separate spreadsheet, so matching invoices to POs required switching between tools, cross-referencing supplier names, dates, and amounts. Discrepancies were flagged by pasting data into yet another spreadsheet and running VLOOKUP formulas. When a mismatch was found, the analyst would compose an email to the supplier, wait for a corrected invoice, and start the cycle again.</span><span class="it">Il processo era interamente manuale. Un analista finanziario apriva ogni email, scaricava l'allegato, identificava visivamente numero fattura, importi, voci e imposte, poi digitava tutto a mano nel sistema contabile (Xero). Gli ordini d'acquisto vivevano in un foglio di calcolo separato, quindi l'abbinamento fatture-PO richiedeva di passare tra strumenti diversi, incrociando nomi fornitori, date e importi. Le discrepanze venivano segnalate incollando i dati in un altro foglio di calcolo ed eseguendo formule CERCA.VERT. Quando si trovava un disallineamento, l'analista scriveva un'email al fornitore, aspettava una fattura corretta e ricominciava il ciclo.</span></p>
+                    <p><span class="en">Month-end close regularly slipped by 5 to 8 working days. The team had zero real-time visibility into outstanding payables, making cash flow forecasting unreliable. Duplicate payments occurred roughly once a quarter, and late payment penalties were a recurring line item on the P&amp;L.</span><span class="it">La chiusura di fine mese slittava regolarmente di 5-8 giorni lavorativi. Il team non aveva visibilit&agrave; in tempo reale sui debiti in sospeso, rendendo le previsioni di cash flow inaffidabili. I pagamenti duplicati si verificavano circa una volta a trimestre, e le penali per ritardato pagamento erano una voce ricorrente nel conto economico.</span></p>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">How it worked before</span><span class="it">Come funzionava prima</span></p>
+                    <div class="process-diagram">
+                        <div class="process-diagram-label before"><span class="en">&#9679; Before: Manual, fragmented, error-prone</span><span class="it">&#9679; Prima: Manuale, frammentato, soggetto a errori</span></div>
+                        <div class="process-flow chaos">
+                            <div class="pf-scattered">
+                                <div class="pf-node"><div class="pf-icon">&#128231;</div><div class="pf-label"><span class="en">PDF invoices via email</span><span class="it">Fatture PDF via email</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128196;</div><div class="pf-label"><span class="en">Scanned paper docs</span><span class="it">Documenti cartacei scansionati</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128202;</div><div class="pf-label"><span class="en">Excel files (varied layouts)</span><span class="it">File Excel (layout vari)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#127760;</div><div class="pf-label"><span class="en">Supplier portals (6+)</span><span class="it">Portali fornitori (6+)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128176;</div><div class="pf-label"><span class="en">PO spreadsheet (manual)</span><span class="it">Foglio PO (manuale)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128100;</div><div class="pf-label"><span class="en">Manual data entry into Xero</span><span class="it">Inserimento manuale in Xero</span></div></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-hub">
+                                <div class="pf-hub-icon">&#9888;</div>
+                                <div class="pf-hub-label"><span class="en">VLOOKUP<br>reconciliation</span><span class="it">Riconciliazione<br>CERCA.VERT</span></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-outputs">
+                                <div class="pf-node"><div class="pf-icon">&#10060;</div><div class="pf-label"><span class="en">Duplicate payments</span><span class="it">Pagamenti duplicati</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#9203;</div><div class="pf-label"><span class="en">5-8 day close delay</span><span class="it">Ritardo chiusura 5-8 gg</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128176;</div><div class="pf-label"><span class="en">Late payment penalties</span><span class="it">Penali ritardato pagamento</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">What We Did</span><span class="it">Cosa Abbiamo Fatto</span></p>
+                    <h3><span class="en">Built an intelligent intake layer that reads every format, matches every PO, and flags every discrepancy automatically.</span><span class="it">Costruito un layer di acquisizione intelligente che legge ogni formato, abbina ogni PO e segnala automaticamente ogni discrepanza.</span></h3>
+                    <p><span class="en">Two built a centralised invoice ingestion pipeline. Emails forwarded to a dedicated inbox are automatically parsed: PDFs are run through OCR with field extraction (invoice number, date, line items, VAT, total), Excel files are normalised regardless of column layout, and supplier portal data is pulled via scheduled API integrations. Every invoice is assigned a unique internal ID and mapped against the supplier master list.</span><span class="it">Two ha costruito una pipeline centralizzata di acquisizione fatture. Le email inoltrate a una casella dedicata vengono analizzate automaticamente: i PDF passano attraverso OCR con estrazione campi (numero fattura, data, voci, IVA, totale), i file Excel vengono normalizzati indipendentemente dal layout delle colonne, e i dati dei portali fornitori vengono estratti tramite integrazioni API pianificate. Ogni fattura riceve un ID interno univoco e viene mappata rispetto all'anagrafica fornitori.</span></p>
+                    <p><span class="en">The system then runs three-way matching automatically: invoice data is compared against the purchase order and the goods received note. Exact matches are auto-approved and pushed directly to Xero with the correct GL codes, cost centres, and tax treatment. Partial matches and discrepancies are routed to a review queue with the specific mismatch highlighted (wrong quantity, price variance, missing PO). A real-time dashboard shows outstanding payables by supplier, aging buckets, and projected cash outflow for the coming 30/60/90 days.</span><span class="it">Il sistema esegue poi automaticamente l'abbinamento a tre vie: i dati della fattura vengono confrontati con l'ordine d'acquisto e la nota di ricevimento merci. Le corrispondenze esatte vengono auto-approvate e inviate direttamente a Xero con i codici GL, centri di costo e trattamento fiscale corretti. Le corrispondenze parziali e le discrepanze vengono indirizzate a una coda di revisione con la specifica difformit&agrave; evidenziata (quantit&agrave; errata, variazione prezzo, PO mancante). Una dashboard in tempo reale mostra i debiti in sospeso per fornitore, le fasce di scadenza e il flusso di cassa previsto per i prossimi 30/60/90 giorni.</span></p>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">How it works now</span><span class="it">Come funziona ora</span></p>
+                    <div class="process-diagram">
+                        <div class="process-diagram-label after"><span class="en">&#9679; After: Automated, unified, instant</span><span class="it">&#9679; Dopo: Automatizzato, unificato, istantaneo</span></div>
+                        <div class="process-flow clean">
+                            <div class="pf-scattered" style="grid-template-columns:repeat(2,1fr)">
+                                <div class="pf-node"><div class="pf-icon">&#128231;</div><div class="pf-label"><span class="en">Email + PDF</span><span class="it">Email + PDF</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128202;</div><div class="pf-label"><span class="en">Excel + Portals</span><span class="it">Excel + Portali</span></div></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-hub">
+                                <div class="pf-hub-icon">&#9889;</div>
+                                <div class="pf-hub-label"><span class="en">OCR + AI<br>Extraction</span><span class="it">OCR + AI<br>Estrazione</span></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-hub">
+                                <div class="pf-hub-icon">&#9878;</div>
+                                <div class="pf-hub-label"><span class="en">3-Way<br>Auto-Match</span><span class="it">Abbinamento<br>automatico 3 vie</span></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-outputs">
+                                <div class="pf-node"><div class="pf-icon">&#9989;</div><div class="pf-label"><span class="en">Auto-posted to Xero</span><span class="it">Auto-registrato in Xero</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128202;</div><div class="pf-label"><span class="en">Real-time AP dashboard</span><span class="it">Dashboard AP in tempo reale</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128176;</div><div class="pf-label"><span class="en">Cash flow forecast</span><span class="it">Previsione cash flow</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">Results</span><span class="it">Risultati</span></p>
+                    <h3><span class="en">Month-end close on time, every time. Zero duplicate payments in 12 months.</span><span class="it">Chiusura mensile puntuale, sempre. Zero pagamenti duplicati in 12 mesi.</span></h3>
+                    <div class="stats-row">
+                        <div class="stat-item"><div class="stat-number"><em>92%</em></div><div class="stat-label"><span class="en">Invoices auto-matched<br>without human review</span><span class="it">Fatture auto-abbinate<br>senza revisione umana</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>5 days</em></div><div class="stat-label"><span class="en">Faster month-end<br>close cycle</span><span class="it">Chiusura mensile<br>pi&ugrave; rapida</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>0</em></div><div class="stat-label"><span class="en">Duplicate payments<br>in 12 months</span><span class="it">Pagamenti duplicati<br>in 12 mesi</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>35hrs</em></div><div class="stat-label"><span class="en">Monthly time saved<br>on invoice processing</span><span class="it">Ore mensili risparmiate<br>su elaborazione fatture</span></div></div>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+
+        <!-- VELA HOSPITALITY — FINANCE RECONCILIATION -->
+        <div class="case-card" onclick="this.classList.toggle('open')">
+            <div class="case-card-header">
+                <div>
+                    <p style="font-family:var(--serif);font-size:22px;letter-spacing:-0.5px;opacity:0.5;margin-bottom:14px"><span class="en">Vela Hospitality</span><span class="it">Vela Hospitality</span></p>
+                    <h2 class="case-card-title"><span class="en">Multi-entity finance reconciliation, <em>fully unified.</em></span><span class="it">Riconciliazione finanziaria multi-entit&agrave;, <em>completamente unificata.</em></span></h2>
+                    <div class="case-card-tags">
+                        <span class="tag"><span class="en">Finance Reconciliation</span><span class="it">Riconciliazione Finanziaria</span></span>
+                        <span class="tag"><span class="en">Multi-entity</span><span class="it">Multi-entit&agrave;</span></span>
+                        <span class="tag"><span class="en">Bank Feeds</span><span class="it">Feed Bancari</span></span>
+                        <span class="tag"><span class="en">Spend Consolidation</span><span class="it">Consolidamento Spesa</span></span>
+                    </div>
+                </div>
+                <button class="case-card-toggle" aria-label="Expand"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></button>
+            </div>
+            <div class="case-card-body"><div class="case-body-inner"><div class="case-divider"></div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">The Challenge</span><span class="it">La Sfida</span></p>
+                    <h3><span class="en">Seven properties, four banks, three POS systems, one spreadsheet to rule them all.</span><span class="it">Sette strutture, quattro banche, tre sistemi POS, un foglio di calcolo per governarli tutti.</span></h3>
+                    <p><span class="en">Vela Hospitality operates seven boutique hotels across Italy and Southern France. Each property runs its own POS system (a mix of Oracle MICROS, Lightspeed, and a legacy on-premise system), feeds revenue into a local bank account, and pays suppliers from a combination of entity-specific and shared accounts across four banking relationships (Intesa Sanpaolo, BNP Paribas, Unicredit, Cr&eacute;dit Agricole).</span><span class="it">Vela Hospitality gestisce sette boutique hotel tra Italia e Sud della Francia. Ogni struttura utilizza il proprio sistema POS (un mix di Oracle MICROS, Lightspeed e un sistema legacy on-premise), versa i ricavi in un conto bancario locale e paga i fornitori da una combinazione di conti specifici per entit&agrave; e condivisi tra quattro relazioni bancarie (Intesa Sanpaolo, BNP Paribas, Unicredit, Cr&eacute;dit Agricole).</span></p>
+                    <p><span class="en">The finance team of three people spent the first two weeks of every month reconciling the previous month. The workflow was painful: download CSV bank statements from each of the four banking portals (each with different date formats, transaction descriptions, and currency handling for EUR transactions). Export revenue data from each POS system, again in different formats. Paste everything into a master Excel workbook with one tab per property. Manually match bank transactions to POS entries and supplier invoices line by line. When a transaction could not be matched, such as a guest chargeback, a bank fee, or an intercompany transfer, it was flagged with a comment and escalated by email to the property manager for clarification.</span><span class="it">Il team finanziario di tre persone dedicava le prime due settimane di ogni mese alla riconciliazione del mese precedente. Il workflow era penoso: scaricare gli estratti conto CSV da ciascuno dei quattro portali bancari (ognuno con formati data, descrizioni transazioni e gestione valuta diversi per le transazioni in EUR). Esportare i dati di ricavo da ogni sistema POS, ancora in formati diversi. Incollare tutto in una cartella di lavoro Excel principale con una scheda per struttura. Abbinare manualmente le transazioni bancarie alle registrazioni POS e alle fatture fornitori riga per riga. Quando una transazione non poteva essere abbinata, come un chargeback ospite, una commissione bancaria o un trasferimento intercompany, veniva contrassegnata con un commento e inoltrata via email al responsabile della struttura per chiarimenti.</span></p>
+                    <p><span class="en">The master spreadsheet grew to over 12,000 rows per month and frequently broke due to formula errors, misaligned rows, or accidental deletions. Intercompany transactions were double-counted or missed entirely, leading to P&amp;L discrepancies that took days to trace. Consolidated reporting to ownership was consistently late, and the finance team had no bandwidth for forward-looking analysis or cash flow planning.</span><span class="it">Il foglio di calcolo principale superava le 12.000 righe al mese e si rompeva frequentemente a causa di errori nelle formule, righe disallineate o cancellazioni accidentali. Le transazioni intercompany venivano conteggiate due volte o perse completamente, causando discrepanze nel conto economico che richiedevano giorni per essere rintracciate. Il reporting consolidato alla propriet&agrave; era costantemente in ritardo, e il team finanziario non aveva capacit&agrave; residua per analisi prospettiche o pianificazione del cash flow.</span></p>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">How it worked before</span><span class="it">Come funzionava prima</span></p>
+                    <div class="process-diagram">
+                        <div class="process-diagram-label before"><span class="en">&#9679; Before: Siloed, manual, two weeks to close</span><span class="it">&#9679; Prima: A silos, manuale, due settimane per chiudere</span></div>
+                        <div class="process-flow chaos">
+                            <div class="pf-scattered">
+                                <div class="pf-node"><div class="pf-icon">&#127974;</div><div class="pf-label"><span class="en">7 POS systems (3 vendors)</span><span class="it">7 sistemi POS (3 fornitori)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#127975;</div><div class="pf-label"><span class="en">4 bank portals (CSV)</span><span class="it">4 portali bancari (CSV)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128231;</div><div class="pf-label"><span class="en">Supplier invoices (email)</span><span class="it">Fatture fornitori (email)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128196;</div><div class="pf-label"><span class="en">Intercompany transfers</span><span class="it">Trasferimenti intercompany</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128179;</div><div class="pf-label"><span class="en">Guest chargebacks</span><span class="it">Chargeback ospiti</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128176;</div><div class="pf-label"><span class="en">Bank fees &amp; FX</span><span class="it">Commissioni bancarie &amp; FX</span></div></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-hub">
+                                <div class="pf-hub-icon">&#128203;</div>
+                                <div class="pf-hub-label"><span class="en">12,000-row<br>Excel workbook</span><span class="it">Cartella Excel<br>12.000 righe</span></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-outputs">
+                                <div class="pf-node"><div class="pf-icon">&#10060;</div><div class="pf-label"><span class="en">Double-counted interco</span><span class="it">Interco conteggiati 2 volte</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#9203;</div><div class="pf-label"><span class="en">2-week close cycle</span><span class="it">Ciclo chiusura 2 settimane</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128561;</div><div class="pf-label"><span class="en">Formula breakage</span><span class="it">Formule rotte</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">What We Did</span><span class="it">Cosa Abbiamo Fatto</span></p>
+                    <h3><span class="en">Built a unified reconciliation engine that connects every bank, every POS, and every entity into a single source of truth.</span><span class="it">Costruito un motore di riconciliazione unificato che collega ogni banca, ogni POS e ogni entit&agrave; in un'unica fonte di verit&agrave;.</span></h3>
+                    <p><span class="en">Two built automated connectors to all four banking APIs and all three POS systems. Bank transactions and POS revenue data are pulled daily into a normalised data model where every transaction is tagged with property, entity, source system, currency, and category. Date formats, transaction descriptions, and amount conventions are standardised at the ingestion layer, so the finance team never touches a raw CSV again.</span><span class="it">Two ha costruito connettori automatizzati verso tutte e quattro le API bancarie e tutti e tre i sistemi POS. Le transazioni bancarie e i dati di ricavo POS vengono estratti quotidianamente in un modello dati normalizzato dove ogni transazione &egrave; taggata con struttura, entit&agrave;, sistema sorgente, valuta e categoria. Formati data, descrizioni transazioni e convenzioni importi vengono standardizzati al livello di acquisizione, cos&igrave; il team finanziario non tocca mai pi&ugrave; un CSV grezzo.</span></p>
+                    <p><span class="en">The reconciliation engine runs rule-based matching: POS revenue entries are matched to bank deposits using amount, date range, and property. Supplier payments are matched to approved invoices. Intercompany transfers are automatically identified and eliminated in consolidation. Bank fees, chargebacks, and FX adjustments are auto-categorised and posted. Anything unmatched is surfaced in a focused exception queue with suggested matches and one-click approval. A consolidated P&amp;L by property, region, and group is generated automatically, with drill-down to any individual transaction.</span><span class="it">Il motore di riconciliazione esegue l'abbinamento basato su regole: le registrazioni di ricavo POS vengono abbinate ai depositi bancari usando importo, intervallo date e struttura. I pagamenti fornitori vengono abbinati alle fatture approvate. I trasferimenti intercompany vengono automaticamente identificati ed eliminati nel consolidamento. Commissioni bancarie, chargeback e aggiustamenti FX vengono auto-categorizzati e registrati. Tutto ci&ograve; che non trova corrispondenza viene visualizzato in una coda di eccezioni mirata con corrispondenze suggerite e approvazione in un click. Un conto economico consolidato per struttura, regione e gruppo viene generato automaticamente, con drill-down fino alla singola transazione.</span></p>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">How it works now</span><span class="it">Come funziona ora</span></p>
+                    <div class="process-diagram">
+                        <div class="process-diagram-label after"><span class="en">&#9679; After: Connected, automated, 2-day close</span><span class="it">&#9679; Dopo: Connesso, automatizzato, chiusura in 2 giorni</span></div>
+                        <div class="process-flow clean">
+                            <div class="pf-scattered" style="grid-template-columns:repeat(2,1fr)">
+                                <div class="pf-node"><div class="pf-icon">&#127974;</div><div class="pf-label"><span class="en">POS APIs (daily pull)</span><span class="it">API POS (pull giornaliero)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#127975;</div><div class="pf-label"><span class="en">Bank APIs (daily pull)</span><span class="it">API bancarie (pull giornaliero)</span></div></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-hub">
+                                <div class="pf-hub-icon">&#9889;</div>
+                                <div class="pf-hub-label"><span class="en">Normalised<br>Data Model</span><span class="it">Modello Dati<br>Normalizzato</span></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-hub">
+                                <div class="pf-hub-icon">&#9878;</div>
+                                <div class="pf-hub-label"><span class="en">Rule-Based<br>Matching</span><span class="it">Abbinamento<br>Basato su Regole</span></div>
+                            </div>
+                            <div class="pf-arrow">&#10230;</div>
+                            <div class="pf-outputs">
+                                <div class="pf-node"><div class="pf-icon">&#9989;</div><div class="pf-label"><span class="en">Auto-reconciled (95%)</span><span class="it">Auto-riconciliato (95%)</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128202;</div><div class="pf-label"><span class="en">Consolidated P&amp;L</span><span class="it">Conto Economico Consolidato</span></div></div>
+                                <div class="pf-node"><div class="pf-icon">&#128269;</div><div class="pf-label"><span class="en">Exception queue</span><span class="it">Coda eccezioni</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">Results</span><span class="it">Risultati</span></p>
+                    <h3><span class="en">From two weeks to two days. Ownership gets consolidated numbers on the 3rd of every month.</span><span class="it">Da due settimane a due giorni. La propriet&agrave; riceve i numeri consolidati il 3 di ogni mese.</span></h3>
+                    <div class="stats-row">
+                        <div class="stat-item"><div class="stat-number"><em>85%</em></div><div class="stat-label"><span class="en">Reduction in<br>reconciliation time</span><span class="it">Riduzione del tempo<br>di riconciliazione</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>95%</em></div><div class="stat-label"><span class="en">Transactions auto-<br>matched on first pass</span><span class="it">Transazioni auto-abbinate<br>al primo passaggio</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>2 days</em></div><div class="stat-label"><span class="en">Month-end close<br>(was 14 days)</span><span class="it">Chiusura mensile<br>(erano 14 giorni)</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>100%</em></div><div class="stat-label"><span class="en">Intercompany<br>auto-eliminated</span><span class="it">Intercompany<br>auto-eliminati</span></div></div>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+    </section>
+
     <section class="what-we-automated">
         <div class="container">
             <p class="section-label"><span class="en">Beyond the case studies</span><span class="it">Oltre i casi studio</span></p>
@@ -309,7 +557,12 @@
         function setLang(lang) {
             if (lang === 'it') { document.body.classList.add('lang-it'); } else { document.body.classList.remove('lang-it'); }
             document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase()); });
+            const homeLink = document.getElementById('homeLink');
+            if (homeLink) homeLink.href = 'index.html' + (lang === 'it' ? '?lang=it' : '');
         }
+        // Read lang from URL on load
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('lang') === 'it') { setLang('it'); }
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
         }, { threshold: 0.15 });
