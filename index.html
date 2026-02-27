@@ -76,6 +76,14 @@
         .logo em { color: var(--text-primary); font-style: italic; }
 
         .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .nav-link:hover { color: var(--text-primary); }
 
         .lang-toggle {
             display: flex;
@@ -422,6 +430,7 @@
         <div class="container">
             <a href="#" class="logo">t<em>w</em>o</a>
             <div class="nav-right">
+                <a href="case-studies.html" class="nav-link">Case Studies</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('it')">IT</button>
@@ -451,6 +460,10 @@
                         <span class="en">Get in touch</span>
                         <span class="it">Contattaci</span>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="case-studies.html" class="btn-secondary">
+                        <span class="en">See Case Studies</span>
+                        <span class="it">Casi Studio</span>
                     </a>
                 </div>
             </div>
@@ -561,11 +574,11 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Two Limited. <a href="mailto:hello@two.limited">hello@two.limited</a></p>
+            <p>&copy; 2026 Two Limited. <a href="/cdn-cgi/l/email-protection#bed6dbd2d2d1fecac9d190d2d7d3d7cadbda"><span class="__cf_email__" data-cfemail="721a171e1e1d3206051d5c1e1b1f1b061716">[email&#160;protected]</span></a></p>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Nav: transparent at top, appears on scroll
         const navEl = document.querySelector('nav');
         window.addEventListener('scroll', () => {
@@ -648,11 +661,4 @@
             });
 
             /* Touch drag — works alongside native scroll */
-            logosGrid.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].pageX - logosGrid.offsetLeft;
-                scrollLeft = logosGrid.scrollLeft;
-            }, { passive: true });
-        }
-    </script>
-</body>
-</html>
+            logos
