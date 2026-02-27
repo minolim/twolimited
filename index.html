@@ -266,10 +266,11 @@
         }
         .service-item {
             padding: 0 40px;
-            opacity: 0;
-            transform: translateY(16px);
+            opacity: 1;
+            transform: translateY(0);
             transition: opacity 0.5s, transform 0.5s;
         }
+        .service-item.animate-ready { opacity: 0; transform: translateY(16px); }
         .service-item.visible { opacity: 1; transform: translateY(0); }
         .service-item:nth-child(2) {
             border-left: 1px solid var(--border);
@@ -610,19 +611,29 @@
         // Init mailto on load
         updateMailto('en');
 
-        // Scroll-triggered fade-in for service items
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
+        // Scroll-triggered fade-in for service items (progressive enhancement)
+        if ('IntersectionObserver' in window && window.innerHeight < document.body.scrollHeight) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
 
-        document.querySelectorAll('.service-item').forEach(item => {
-            observer.observe(item);
-        });
+            document.querySelectorAll('.service-item').forEach(item => {
+                item.classList.add('animate-ready');
+                observer.observe(item);
+            });
+
+            // Fallback: make visible after 2s in case observer never fires
+            setTimeout(() => {
+                document.querySelectorAll('.service-item').forEach(item => {
+                    item.classList.add('visible');
+                });
+            }, 2000);
+        }
         /* Drag-to-scroll for logos grid on mobile */
         const logosGrid = document.querySelector('.logos-grid');
         if (logosGrid) {
@@ -656,4 +667,11 @@
             });
 
             /* Touch drag — works alongside native scroll */
-            logos
+            logosGrid.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX - logosGrid.offsetLeft;
+                scrollLeft = logosGrid.scrollLeft;
+            }, { passive: true });
+        }
+    </script>
+</body>
+</html>
