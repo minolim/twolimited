@@ -4,925 +4,317 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>two | Case Studies</title>
-    <meta name="description" content="See how Two helps marketing and media teams automate planning, reporting, and performance at scale.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #F7F5F2;
-            --bg-elevated: #EDEBE8;
-            --bg-card: #E8E5E0;
-            --bg-dark: #0A0A0A;
-            --text-primary: #0A0A0A;
-            --text-secondary: #5A5652;
-            --text-muted: #8A8580;
-            --accent-lime: #B8D900;
-            --accent-lime-dim: rgba(184,217,0,0.12);
+            --bg: #F7F5F2; --bg-elevated: #EDEBE8; --bg-card: #E8E5E0; --bg-dark: #0A0A0A;
+            --text-primary: #0A0A0A; --text-secondary: #5A5652; --text-muted: #8A8580;
+            --accent-lime: #B8D900; --accent-lime-dim: rgba(184,217,0,0.12);
             --border: rgba(0,0,0,0.08);
-            --serif: 'Instrument Serif', Georgia, serif;
-            --sans: 'DM Sans', system-ui, sans-serif;
+            --serif: 'Instrument Serif', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif;
         }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; overflow-x:hidden; }
+        body { font-family:var(--sans); background:var(--bg); color:var(--text-primary); line-height:1.6; -webkit-font-smoothing:antialiased; }
+        body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events:none; z-index:50; }
+        .container { max-width:1200px; margin:0 auto; padding:0 32px; }
+        .it { display:none; }
+        body.lang-it .en { display:none; }
+        body.lang-it .it { display:revert; }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:20px 0; background:rgba(247,245,242,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        nav .container { display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:var(--serif); font-size:28px; color:var(--text-primary); text-decoration:none; letter-spacing:-0.5px; text-transform:lowercase; }
+        .logo em { font-style:italic; }
+        .nav-right { display:flex; align-items:center; gap:20px; }
+        .nav-link { color:var(--text-secondary); text-decoration:none; font-size:14px; font-weight:400; transition:color 0.3s; }
+        .nav-link:hover { color:var(--text-primary); }
+        .lang-toggle { display:flex; gap:2px; background:var(--bg-elevated); border-radius:8px; padding:3px; border:1px solid var(--border); }
+        .lang-btn { padding:6px 14px; border:none; background:transparent; color:var(--text-secondary); font-family:var(--sans); font-size:13px; font-weight:500; border-radius:6px; cursor:pointer; transition:all 0.3s; letter-spacing:0.5px; }
+        .lang-btn.active { background:var(--text-primary); color:var(--bg); }
+        .nav-cta { padding:10px 24px; background:var(--text-primary); color:var(--bg); text-decoration:none; font-size:14px; font-weight:500; border-radius:8px; transition:all 0.3s; }
+        .nav-cta:hover { opacity:0.75; transform:translateY(-1px); }
 
-        body {
-            font-family: var(--sans);
-            background: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+        .page-hero { padding:160px 0 80px; position:relative; overflow:hidden; }
+        .page-hero::before { content:''; position:absolute; top:-200px; right:-300px; width:800px; height:800px; background:radial-gradient(circle,rgba(184,217,0,0.07) 0%,transparent 70%); pointer-events:none; }
+        .page-hero .section-label { font-size:10px; text-transform:uppercase; letter-spacing:2.5px; color:var(--text-secondary); margin-bottom:16px; font-weight:500; opacity:0.7; }
+        .page-hero h1 { font-family:var(--serif); font-size:clamp(42px,6vw,76px); line-height:1.08; font-weight:400; letter-spacing:-2px; max-width:800px; margin-bottom:24px; }
+        .page-hero h1 em { font-style:italic; color:var(--accent-lime); }
+        .page-hero-desc { font-size:clamp(15px,1.5vw,18px); color:var(--text-secondary); max-width:620px; line-height:1.7; font-weight:300; }
 
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 50;
-        }
+        .case-studies-grid { padding:0 0 100px; display:flex; flex-direction:column; gap:24px; }
+        .case-card { background:var(--bg-elevated); border-radius:16px; overflow:hidden; border:1px solid var(--border); cursor:pointer; transition:all 0.4s ease; }
+        .case-card:hover { border-color:rgba(0,0,0,0.14); box-shadow:0 8px 40px rgba(0,0,0,0.04); }
+        .case-card-header { display:grid; grid-template-columns:1fr auto; align-items:center; padding:48px 56px; gap:40px; }
+        .case-card-logo { height:22px; width:auto; opacity:0.5; margin-bottom:14px; display:block; }
+        .case-card-logo.dentsu { height:22px; }
+        .case-card-logo.unibet { height:26px; }
+        .case-card-logo.servicenow { height:20px; }
+        .case-card-logo-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+        .case-card-logo-row .x-symbol { font-size:14px; color:var(--text-muted); font-weight:300; }
+        .case-card-title { font-family:var(--serif); font-size:clamp(26px,3vw,38px); line-height:1.15; letter-spacing:-0.8px; font-weight:400; margin-bottom:16px; }
+        .case-card-title em { font-style:italic; color:var(--accent-lime); }
+        .case-card-tags { display:flex; flex-wrap:wrap; gap:8px; }
+        .tag { padding:6px 14px; background:rgba(0,0,0,0.04); border-radius:100px; font-size:12px; color:var(--text-secondary); font-weight:400; }
+        .case-card-toggle { width:48px; height:48px; border-radius:50%; border:1px solid var(--border); background:transparent; display:flex; align-items:center; justify-content:center; transition:all 0.4s; flex-shrink:0; cursor:pointer; }
+        .case-card-toggle svg { width:20px; height:20px; color:var(--text-secondary); transition:transform 0.4s; }
+        .case-card.open .case-card-toggle svg { transform:rotate(180deg); }
+        .case-card.open .case-card-toggle { background:var(--text-primary); border-color:var(--text-primary); }
+        .case-card.open .case-card-toggle svg { color:var(--bg); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        .case-card-body { max-height:0; overflow:hidden; transition:max-height 0.6s cubic-bezier(0.25,0,0.2,1); }
+        .case-card.open .case-card-body { max-height:3000px; }
+        .case-body-inner { padding:0 56px 56px; }
+        .case-divider { height:1px; background:var(--border); margin-bottom:48px; }
+        .case-section { margin-bottom:48px; }
+        .case-section:last-child { margin-bottom:0; }
+        .case-section-label { font-size:10px; text-transform:uppercase; letter-spacing:2.5px; color:var(--accent-lime); font-weight:600; margin-bottom:16px; }
+        .case-section h3 { font-family:var(--serif); font-size:clamp(20px,2.2vw,28px); font-weight:400; letter-spacing:-0.3px; line-height:1.25; margin-bottom:16px; }
+        .case-section p { color:var(--text-secondary); font-size:15px; line-height:1.8; font-weight:300; max-width:720px; }
+        .case-section p + p { margin-top:12px; }
 
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: 20px 0;
-            background: rgba(247,245,242,0.97);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:32px; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--bg); }
+        .stat-item { padding:28px 32px; border-right:1px solid var(--border); }
+        .stat-item:last-child { border-right:none; }
+        .stat-number { font-family:var(--serif); font-size:clamp(32px,3.5vw,48px); line-height:1; letter-spacing:-1.5px; color:var(--text-primary); margin-bottom:6px; }
+        .stat-number em { font-style:italic; color:var(--accent-lime); }
+        .stat-label { font-size:13px; color:var(--text-muted); font-weight:400; line-height:1.4; }
 
-        .logo {
-            font-family: var(--serif);
-            font-size: 28px;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-            text-transform: lowercase;
-        }
-        .logo em { font-style: italic; }
+        .what-we-automated { padding:100px 0; border-top:1px solid var(--border); }
+        .section-label { font-size:10px; text-transform:uppercase; letter-spacing:2.5px; color:var(--text-secondary); margin-bottom:12px; font-weight:500; opacity:0.7; }
+        .section-title { font-family:var(--serif); font-size:clamp(28px,3.5vw,46px); line-height:1.12; letter-spacing:-1px; margin-bottom:56px; max-width:700px; }
+        .section-title em { font-style:italic; color:var(--accent-lime); }
+        .automation-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+        .automation-item { padding:0 40px 48px; opacity:0; transform:translateY(16px); transition:opacity 0.5s,transform 0.5s; }
+        .automation-item.visible { opacity:1; transform:translateY(0); }
+        .automation-item:nth-child(3n+2) { border-left:1px solid var(--border); border-right:1px solid var(--border); }
+        .automation-item:nth-child(3n+1) { padding-left:0; }
+        .automation-item:nth-child(3n) { padding-right:0; }
+        .automation-item:nth-child(n+4) { padding-top:48px; border-top:1px solid var(--border); }
+        .automation-num { font-size:11px; font-weight:500; color:var(--text-secondary); letter-spacing:2px; opacity:0.5; margin-bottom:18px; }
+        .automation-item h3 { font-family:var(--serif); font-size:clamp(18px,1.8vw,22px); font-weight:400; letter-spacing:-0.3px; margin-bottom:12px; line-height:1.25; }
+        .automation-item p { color:var(--text-secondary); font-size:14px; line-height:1.75; font-weight:300; }
 
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-        .nav-link:hover { color: var(--text-primary); }
-        .nav-cta {
-            padding: 10px 24px;
-            background: var(--text-primary);
-            color: var(--bg);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-        .nav-cta:hover { opacity: 0.75; transform: translateY(-1px); }
-
-        /* PAGE HERO */
-        .page-hero {
-            padding: 160px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        .page-hero::before {
-            content: '';
-            position: absolute;
-            top: -200px; right: -300px;
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(184,217,0,0.07) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .page-hero .section-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            font-weight: 500;
-            opacity: 0.7;
-        }
-        .page-hero h1 {
-            font-family: var(--serif);
-            font-size: clamp(42px, 6vw, 76px);
-            line-height: 1.08;
-            font-weight: 400;
-            letter-spacing: -2px;
-            max-width: 800px;
-            margin-bottom: 24px;
-        }
-        .page-hero h1 em { font-style: italic; color: var(--accent-lime); }
-        .page-hero-desc {
-            font-size: clamp(15px, 1.5vw, 18px);
-            color: var(--text-secondary);
-            max-width: 620px;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-
-
-        .case-card-logo {
-            height: 22px;
-            width: auto;
-            opacity: 0.6;
-            margin-bottom: 14px;
-            display: block;
-        }
-        .case-card-logo.dentsu { height: 22px; }
-        .case-card-logo.unibet { height: 26px; }
-        .case-card-logo.servicenow { height: 20px; }
-
-        /* CASE STUDY CARDS */
-        .case-studies-grid {
-            padding: 0 0 100px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .case-card {
-            background: var(--bg-elevated);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-        .case-card:hover {
-            border-color: rgba(0,0,0,0.14);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.04);
-        }
-
-        .case-card-header {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            padding: 48px 56px;
-            gap: 40px;
-        }
-        .case-card-left {}
-        .case-card-client {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 12px;
-        }
-        .case-card-title {
-            font-family: var(--serif);
-            font-size: clamp(26px, 3vw, 38px);
-            line-height: 1.15;
-            letter-spacing: -0.8px;
-            font-weight: 400;
-            margin-bottom: 16px;
-        }
-        .case-card-title em { font-style: italic; color: var(--accent-lime); }
-        .case-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .tag {
-            padding: 6px 14px;
-            background: rgba(0,0,0,0.04);
-            border-radius: 100px;
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-weight: 400;
-            letter-spacing: 0.2px;
-        }
-        .case-card-toggle {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-        .case-card-toggle svg {
-            width: 20px;
-            height: 20px;
-            color: var(--text-secondary);
-            transition: transform 0.4s;
-        }
-        .case-card.open .case-card-toggle svg { transform: rotate(180deg); }
-        .case-card.open .case-card-toggle {
-            background: var(--text-primary);
-            border-color: var(--text-primary);
-        }
-        .case-card.open .case-card-toggle svg { color: var(--bg); }
-
-        /* EXPANDABLE BODY */
-        .case-card-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.25, 0, 0.2, 1);
-        }
-        .case-card.open .case-card-body {
-            max-height: 3000px;
-        }
-        .case-body-inner {
-            padding: 0 56px 56px;
-        }
-
-        .case-divider {
-            height: 1px;
-            background: var(--border);
-            margin-bottom: 48px;
-        }
-
-        /* CHALLENGE / SOLUTION / RESULTS BLOCKS */
-        .case-section {
-            margin-bottom: 48px;
-        }
-        .case-section:last-child { margin-bottom: 0; }
-        .case-section-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--accent-lime);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .case-section h3 {
-            font-family: var(--serif);
-            font-size: clamp(20px, 2.2vw, 28px);
-            font-weight: 400;
-            letter-spacing: -0.3px;
-            line-height: 1.25;
-            margin-bottom: 16px;
-        }
-        .case-section p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.8;
-            font-weight: 300;
-            max-width: 720px;
-        }
-        .case-section p + p {
-            margin-top: 12px;
-        }
-
-        /* STATS ROW */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 0;
-            margin-top: 32px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--bg);
-        }
-        .stat-item {
-            padding: 28px 32px;
-            border-right: 1px solid var(--border);
-        }
-        .stat-item:last-child { border-right: none; }
-        .stat-number {
-            font-family: var(--serif);
-            font-size: clamp(32px, 3.5vw, 48px);
-            line-height: 1;
-            letter-spacing: -1.5px;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-        }
-        .stat-number em { font-style: italic; color: var(--accent-lime); }
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        /* METHODOLOGY BLOCK */
-        .methodology-block {
-            margin-top: 32px;
-            background: var(--bg);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            padding: 32px;
-        }
-        .methodology-block-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 16px;
-        }
-        .methodology-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .methodology-item {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-        .methodology-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            background: var(--accent-lime-dim);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .methodology-icon svg {
-            width: 16px;
-            height: 16px;
-            color: #7A9100;
-        }
-        .methodology-item-text h4 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-        .methodology-item-text p {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-weight: 300;
-            max-width: 100%;
-        }
-
-        /* WHAT WE AUTOMATED SECTION */
-        .what-we-automated {
-            padding: 100px 0;
-            border-top: 1px solid var(--border);
-        }
-        .what-we-automated .section-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            font-weight: 500;
-            opacity: 0.7;
-        }
-        .what-we-automated .section-title {
-            font-family: var(--serif);
-            font-size: clamp(28px, 3.5vw, 46px);
-            line-height: 1.12;
-            letter-spacing: -1px;
-            margin-bottom: 56px;
-            max-width: 700px;
-        }
-        .what-we-automated .section-title em { font-style: italic; color: var(--accent-lime); }
-
-        .automation-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-        }
-        .automation-item {
-            padding: 0 40px;
-            padding-bottom: 48px;
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-        .automation-item.visible { opacity: 1; transform: translateY(0); }
-        .automation-item:nth-child(3n+2) {
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-        }
-        .automation-item:first-child,
-        .automation-item:nth-child(3n+1) { padding-left: 0; }
-        .automation-item:nth-child(3n) { padding-right: 0; }
-        .automation-item:nth-child(n+4) {
-            padding-top: 48px;
-            border-top: 1px solid var(--border);
-        }
-        .automation-num {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            letter-spacing: 2px;
-            opacity: 0.5;
-            margin-bottom: 18px;
-        }
-        .automation-item h3 {
-            font-family: var(--serif);
-            font-size: clamp(18px, 1.8vw, 22px);
-            font-weight: 400;
-            letter-spacing: -0.3px;
-            margin-bottom: 12px;
-            line-height: 1.25;
-        }
-        .automation-item p {
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.75;
-            font-weight: 300;
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-        }
-        .cta-inner {
-            background: var(--bg-dark);
-            border-radius: 20px;
-            padding: 80px 64px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-inner::before {
-            content: '';
-            position: absolute;
-            top: -100px; right: -100px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(184,217,0,0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .cta-inner h2 {
-            font-family: var(--serif);
-            font-size: clamp(32px, 4vw, 52px);
-            color: #fff;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-            position: relative;
-        }
-        .cta-inner h2 em { font-style: italic; color: var(--accent-lime); }
-        .cta-inner p {
-            color: rgba(255,255,255,0.5);
-            font-size: 16px;
-            line-height: 1.7;
-            font-weight: 300;
-            max-width: 480px;
-            margin: 0 auto 36px;
-            position: relative;
-        }
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 40px;
-            background: var(--accent-lime);
-            color: var(--bg-dark);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .cta-btn:hover { transform: translateY(-2px); opacity: 0.9; }
-
-        /* FOOTER */
-        footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-        }
-        footer p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-        footer a:hover { color: var(--text-primary); }
-
-        /* ANIMATIONS */
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-up { animation: fadeUp 0.8s ease both; }
-        .fade-up-1 { animation-delay: 0.1s; }
-        .fade-up-2 { animation-delay: 0.2s; }
-        .fade-up-3 { animation-delay: 0.3s; }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .case-card-header { padding: 32px 28px; grid-template-columns: 1fr 40px; gap: 20px; }
-            .case-body-inner { padding: 0 28px 36px; }
-            .stats-row { grid-template-columns: 1fr 1fr; }
-            .stat-item:nth-child(2) { border-right: none; }
-            .stat-item:nth-child(3),
-            .stat-item:nth-child(4) { border-top: 1px solid var(--border); }
-            .automation-grid { grid-template-columns: 1fr; gap: 0; }
-            .automation-item { padding: 32px 0 !important; border-left: none !important; border-right: none !important; border-top: 1px solid var(--border); }
-            .automation-item:first-child { border-top: none; padding-top: 0 !important; }
-            .methodology-items { grid-template-columns: 1fr; }
-            .cta-inner { padding: 56px 28px; }
-            .page-hero { padding: 130px 0 60px; }
+        .cta-section { padding:80px 0; border-top:1px solid var(--border); }
+        .cta-inner { background:var(--bg-dark); border-radius:20px; padding:80px 64px; text-align:center; position:relative; overflow:hidden; }
+        .cta-inner::before { content:''; position:absolute; top:-100px; right:-100px; width:400px; height:400px; background:radial-gradient(circle,rgba(184,217,0,0.15) 0%,transparent 70%); pointer-events:none; }
+        .cta-inner h2 { font-family:var(--serif); font-size:clamp(32px,4vw,52px); color:#fff; line-height:1.1; letter-spacing:-1.5px; margin-bottom:16px; position:relative; }
+        .cta-inner h2 em { font-style:italic; color:var(--accent-lime); }
+        .cta-inner p { color:rgba(255,255,255,0.5); font-size:16px; line-height:1.7; font-weight:300; max-width:480px; margin:0 auto 36px; position:relative; }
+        .cta-btn { display:inline-flex; align-items:center; gap:10px; padding:16px 40px; background:var(--accent-lime); color:var(--bg-dark); text-decoration:none; font-size:15px; font-weight:600; border-radius:10px; transition:all 0.3s; position:relative; }
+        .cta-btn:hover { transform:translateY(-2px); opacity:0.9; }
+        footer { padding:40px 0; border-top:1px solid var(--border); }
+        footer p { font-size:13px; color:var(--text-muted); }
+        footer a { color:var(--text-secondary); text-decoration:none; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+        .fade-up { animation:fadeUp 0.8s ease both; }
+        .fade-up-1 { animation-delay:0.1s; }
+        .fade-up-2 { animation-delay:0.2s; }
+        .fade-up-3 { animation-delay:0.3s; }
+        @media (max-width:768px) {
+            .container { padding:0 20px; }
+            .case-card-header { padding:32px 28px; grid-template-columns:1fr 40px; gap:20px; }
+            .case-body-inner { padding:0 28px 36px; }
+            .stats-row { grid-template-columns:1fr 1fr; }
+            .stat-item:nth-child(2) { border-right:none; }
+            .stat-item:nth-child(3),.stat-item:nth-child(4) { border-top:1px solid var(--border); }
+            .automation-grid { grid-template-columns:1fr; }
+            .automation-item { padding:32px 0 !important; border-left:none !important; border-right:none !important; border-top:1px solid var(--border); }
+            .automation-item:first-child { border-top:none; padding-top:0 !important; }
+            .cta-inner { padding:56px 28px; }
+            .page-hero { padding:130px 0 60px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- NAV -->
     <nav>
         <div class="container">
-            <a href="/" class="logo"><em>two</em></a>
+            <a href="index.html" class="logo">t<em>w</em>o</a>
             <div class="nav-right">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="mailto:hello@two.limited?subject=Meeting%20Request%20%E2%80%93%20Two%20Limited" class="nav-cta">Book a Meeting</a>
+                <a href="index.html" class="nav-link"><span class="en">Home</span><span class="it">Home</span></a>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" onclick="setLang('it')">IT</button>
+                </div>
+                <a href="mailto:hello@two.limited?subject=Meeting%20Request" class="nav-cta">
+                    <span class="en">Book a Meeting</span><span class="it">Prenota un Incontro</span>
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- PAGE HERO -->
     <section class="page-hero">
         <div class="container">
-            <p class="section-label fade-up fade-up-1">Case Studies</p>
-            <h1 class="fade-up fade-up-2">Real teams, <em>real impact.</em></h1>
-            <p class="page-hero-desc fade-up fade-up-3">We help marketing, media, and account teams replace manual processes with intelligent automation, from campaign setup to reporting, from brief to billing.</p>
+            <p class="section-label fade-up fade-up-1"><span class="en">Case Studies</span><span class="it">Casi Studio</span></p>
+            <h1 class="fade-up fade-up-2"><span class="en">Real teams, <em>real impact.</em></span><span class="it">Team reali, <em>impatto reale.</em></span></h1>
+            <p class="page-hero-desc fade-up fade-up-3"><span class="en">We help marketing, media, and account teams replace manual processes with intelligent automation, from campaign setup to reporting, from brief to billing.</span><span class="it">Aiutiamo i team di marketing, media e account a sostituire i processi manuali con l'automazione intelligente, dalla configurazione delle campagne al reporting, dal brief alla fatturazione.</span></p>
         </div>
     </section>
 
-    <!-- CASE STUDIES -->
     <section class="case-studies-grid container">
 
         <!-- SERVICENOW -->
         <div class="case-card" onclick="this.classList.toggle('open')">
             <div class="case-card-header">
-                <div class="case-card-left">
+                <div>
                     <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMTMuMDciIGhlaWdodD0iMzEuNDkiIHZpZXdCb3g9IjAgMCAyMTMuMDcgMzEuNDkiPjx0aXRsZT5TZXJ2aWNlTm93IGxvZ28gLSBCcmFuZGxvZ29zLm5ldDwvdGl0bGU+PHBhdGggZD0iTTQ1Ny4zNyw1MDZhOS4yNiw5LjI2LDAsMCwwLTUuOTQsMi4xNHYtMS45Mkg0NDZWNTI3LjNoNS42NHYtMTMuNWE2LjcxLDYuNzEsMCwwLDEsNS4xMi0yLjYxLDUuNzUsNS43NSwwLDAsMSwyLjI2LjM0VjUwNi4xYTkuNjMsOS42MywwLDAsMC0xLjY1LS4xNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQwNS40NiAtNDk2LjI2KSIvPjxwYXRoIGQ9Ik00MDguMiw1MjAuODVhOC44NCw4Ljg0LDAsMCwwLDUuNzYsMi4wOWMxLjUyLDAsMi42OS0uNzQsMi42OS0xLjc4LDAtMy4xOC0xMC4xOS0yLTEwLjE5LTguODQsMC00LDMuOS02LjU4LDguMDctNi41OGExMywxMywwLDAsMSw3LjExLDIuMTRMNDE5LDUxMmE3LjA4LDcuMDgsMCwwLDAtNC0xLjQ0Yy0xLjU2LDAtMi44Ni42MS0yLjg2LDEuNywwLDIuNzQsMTAuMiwxLjY1LDEwLjIsOSwwLDQuMDUtNCw2LjUzLTguMzcsNi41M2ExNC41MiwxNC41MiwwLDAsMS04LjQ2LTIuODJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDA1LjQ2IC00OTYuMjYpIi8+PHBhdGggZD0iTTQ0My42LDUxNi41NGMwLTUuODgtNC4xMi0xMC44LTkuOTQtMTAuOC02LjI1LDAtMTAuMjQsNS4xNC0xMC4yNCwxMWExMC41NCwxMC41NCwwLDAsMCwxMC4wOCwxMXEuNDcsMCwuOTQsMGExMS4zOSwxMS4zOSwwLDAsMCw4LjYzLTMuNzlsLTMuMjEtMy4yMmE3LjQzLDcuNDMsMCwwLDEtNS4yOSwyLjQ0LDUuNTMsNS41MywwLDAsMS01LjY5LTVoMTQuNThBOS40NCw5LjQ0LDAsMCwwLDQ0My42LDUxNi41NFpNNDI5LjE1LDUxNGE0LjU3LDQuNTcsMCwwLDEsNC41MS0zLjcsNC4yLDQuMiwwLDAsMSw0LjE3LDMuN1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00MDUuNDYgLTQ5Ni4yNikiLz48cG9seWdvbiBwb2ludHM9IjY3IDIyLjgxIDcyLjc3IDkuOTIgNzguNjMgOS45MiA2OC45NiAzMS4wNCA2NS4wNSAzMS4wNCA1NS4zOCA5LjkyIDYxLjIzIDkuOTIgNjcgMjIuODEiLz48cGF0aCBkPSJNNDg4LjgzLDQ5Ni4yNmEzLjYyLDMuNjIsMCwxLDEtLjA3LDBoLjA3IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDA1LjQ2IC00OTYuMjYpIi8+PHJlY3QgeD0iODAuNTUiIHk9IjkuOTIiIHdpZHRoPSI1LjY0IiBoZWlnaHQ9IjIxLjEyIi8+PHBhdGggZD0iTTUxNSw1MjNhMTEuMTQsMTEuMTQsMCwwLDEtOS41NSw0Ljc1LDExLDExLDAsMCwxLS41Ni0yMmguNmExMS4yMSwxMS4yMSwwLDAsMSw4Ljg1LDQuMjJsLTQsMy41M2E2LjA5LDYuMDksMCwwLDAtNC44Ni0yLjUzLDUuNjUsNS42NSwwLDAsMC01LjY4LDUuNjNxMCwuMDgsMCwuMTZhNS41Nyw1LjU3LDAsMCwwLDUuMzksNS43NWguNDNhNi4xNiw2LjE2LDAsMCwwLDUtMi43OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00MDUuNDYgLTQ5Ni4yNikiLz48cGF0aCBkPSJNNTM1LjQ2LDUyMy45NGExMS4zOSwxMS4zOSwwLDAsMS04LjYzLDMuNzksMTAuNTQsMTAuNTQsMCwwLDEtMTEtMTBxMC0uNDcsMC0uOTRjMC01Ljg4LDQtMTEsMTAuMjQtMTEsNS44MSwwLDkuOTMsNC45Miw5LjkzLDEwLjhhOS4yOCw5LjI4LDAsMCwxLS4xMywxLjYxSDUyMS4yN2E1LjUzLDUuNTMsMCwwLDAsNS42OCw1LDcuNDQsNy40NCwwLDAsMCw1LjI5LTIuNDRaTTUzMC4yMSw1MTRhNC4yLDQuMiwwLDAsMC00LjE2LTMuNyw0LjU3LDQuNTcsMCwwLDAtNC41MSwzLjdaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDA1LjQ2IC00OTYuMjYpIi8+PHBhdGggZD0iTTUzOC4yMiw1MjcuM1Y1MDYuMThoNS40MnYxLjdhOS4yNiw5LjI2LDAsMCwxLDUuOTQtMi4xMyw5LjQ2LDkuNDYsMCwwLDEsNy4yOSwzLjQsMTAuNjcsMTAuNjcsMCwwLDEsMi4xNyw3LjQxVjUyNy4zSDU1My40VjUxNi4xYTUuMTIsNS4xMiwwLDAsMC0xLjI2LTRBNC40Myw0LjQzLDAsMCwwLDU0OSw1MTFhNi43MSw2LjcxLDAsMCwwLTUuMTIsMi42MVY1MjcuM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00MDUuNDYgLTQ5Ni4yNikiLz48cGF0aCBkPSJNNTczLjU3LDUwNS43NGExMi4zNSwxMi4zNSwwLDAsMC04LjUxLDIxLjMzLDIuNDQsMi40NCwwLDAsMCwzLjE3LjE2LDguODIsOC44MiwwLDAsMSwxMC41MywwLDIuNDUsMi40NSwwLDAsMCwzLjE5LS4xOSwxMi4zNSwxMi4zNSwwLDAsMC04LjM4LTIxLjMxbS0uMDcsMTguNTFhNiw2LDAsMCwxLTYuMTUtNS44MnEwLS4xNiwwLS4zMmE2LjE1LDYuMTUsMCwxLDEsMTIuMywwLDYsNiwwLDAsMS01LjgzLDYuMTVoLS4zMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQwNS40NiAtNDk2LjI2KSIgc3R5bGU9ImZpbGw6IzAwMDAwMCIvPjxwb2x5Z29uIHBvaW50cz0iMTkxLjQ5IDMxLjA0IDE4Ny4yOSAzMS4wNCAxNzguOTEgOS45MiAxODQuNTQgOS45MiAxODkuMTMgMjEuOTkgMTkzLjY0IDkuOTIgMTk4LjM0IDkuOTIgMjAyLjgxIDIxLjk5IDIwNy40NCA5LjkyIDIxMy4wNyA5LjkyIDIwNC42OSAzMS4wNCAyMDAuNDkgMzEuMDQgMTk1Ljk5IDE5LjAxIDE5MS40OSAzMS4wNCIvPjwvc3ZnPg==" alt="ServiceNow" class="case-card-logo servicenow">
-                    <h2 class="case-card-title">Cutting campaign launch time from <em>3 months to 3 weeks.</em></h2>
+                    <h2 class="case-card-title"><span class="en">Cutting campaign launch time from <em>3 months to 3 weeks.</em></span><span class="it">Tempo di lancio delle campagne ridotto da <em>3 mesi a 3 settimane.</em></span></h2>
                     <div class="case-card-tags">
-                        <span class="tag">Campaign Automation</span>
-                        <span class="tag">ROI Reporting</span>
-                        <span class="tag">Process Automation</span>
+                        <span class="tag"><span class="en">Campaign Automation</span><span class="it">Automazione Campagne</span></span>
+                        <span class="tag"><span class="en">ROI Reporting</span><span class="it">Reporting ROI</span></span>
+                        <span class="tag"><span class="en">Process Automation</span><span class="it">Automazione Processi</span></span>
                     </div>
                 </div>
-                <button class="case-card-toggle" aria-label="Expand case study">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                </button>
+                <button class="case-card-toggle" aria-label="Expand"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></button>
             </div>
-            <div class="case-card-body">
-                <div class="case-body-inner">
-                    <div class="case-divider"></div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">The Challenge</p>
-                        <h3>A global marketing team drowning in manual work.</h3>
-                        <p>ServiceNow's marketing team was running large-scale digital campaigns across paid search, social, and programmatic, but everything was slow. Getting a campaign live took an average of three months of setup across multiple teams. Reporting was assembled manually in spreadsheets, making it nearly impossible to understand true ROAS per channel or attribute pipeline accurately. Campaign setup, brief creation, and purchase order management consumed hours of senior talent's time every week.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">What We Did</p>
-                        <h3>Automated the end-to-end campaign lifecycle.</h3>
-                        <p>Two embedded with ServiceNow's marketing operations team and mapped every manual touchpoint, from brief intake to trafficking, from ad ops setup to finance reconciliation. We built automated workflows that took brief requests from account teams, generated structured campaign plans with standardised taxonomy, and pushed trafficking instructions directly to ad ops platforms.</p>
-                        <p>For reporting, we created a unified data layer that pulled spend, impression, click, and conversion data from every active platform and connected it to CRM pipeline data. Real-time dashboards replaced monthly spreadsheet decks, giving leadership instant visibility into ROAS by channel, campaign, and region.</p>
-
-                        <div class="methodology-block">
-                            <p class="methodology-block-label">Our Approach</p>
-                            <div class="methodology-items">
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Brief Automation</h4>
-                                        <p>Automated brief intake from account teams with structured forms and approval workflows.</p>
-                                    </div>
-                                </div>
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Unified Reporting</h4>
-                                        <p>Connected spend, performance, and pipeline data into a single real-time dashboard.</p>
-                                    </div>
-                                </div>
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Campaign Setup</h4>
-                                        <p>Auto-generated campaign structures, PO creation, and ad ops trafficking sheets.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">Results</p>
-                        <h3>From 3 months of setup to 3 weeks, and clarity on every dollar.</h3>
-
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <div class="stat-number"><em>78%</em></div>
-                                <div class="stat-label">Faster campaign<br>launch time</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>3.4x</em></div>
-                                <div class="stat-label">Improvement<br>in ROAS visibility</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>120</em></div>
-                                <div class="stat-label">Hours per month<br>saved on reporting</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>41%</em></div>
-                                <div class="stat-label">Increase in<br>attributed pipeline</div>
-                            </div>
-                        </div>
+            <div class="case-card-body"><div class="case-body-inner"><div class="case-divider"></div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">The Challenge</span><span class="it">La Sfida</span></p>
+                    <h3><span class="en">A global marketing team drowning in manual work.</span><span class="it">Un team di marketing globale sommerso dal lavoro manuale.</span></h3>
+                    <p><span class="en">ServiceNow's marketing team was running large-scale digital campaigns across paid search, social, and programmatic, but everything was slow. Getting a campaign live took an average of three months of setup across multiple teams. Reporting was assembled manually in spreadsheets, making it nearly impossible to understand true ROAS per channel or attribute pipeline accurately.</span><span class="it">Il team marketing di ServiceNow gestiva campagne digitali su larga scala tra paid search, social e programmatic, ma tutto era lento. La messa online di una campagna richiedeva in media tre mesi di configurazione tra pi&ugrave; team. Il reporting veniva assemblato manualmente in fogli di calcolo, rendendo quasi impossibile comprendere il vero ROAS per canale.</span></p>
+                </div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">What We Did</span><span class="it">Cosa Abbiamo Fatto</span></p>
+                    <h3><span class="en">Automated the end-to-end campaign lifecycle.</span><span class="it">Automatizzato l'intero ciclo di vita delle campagne.</span></h3>
+                    <p><span class="en">Two embedded with ServiceNow's marketing operations team and mapped every manual touchpoint, from brief intake to trafficking, from ad ops setup to finance reconciliation. We built automated workflows that took brief requests from account teams, generated structured campaign plans with standardised taxonomy, and pushed trafficking instructions directly to ad ops platforms.</span><span class="it">Two si &egrave; integrato nel team di marketing operations di ServiceNow e ha mappato ogni punto di contatto manuale, dall'acquisizione dei brief al trafficking, dalla configurazione ad ops alla riconciliazione finanziaria. Abbiamo costruito workflow automatizzati che acquisivano le richieste di brief, generavano piani campagna strutturati con tassonomia standardizzata e inviavano le istruzioni di trafficking direttamente alle piattaforme ad ops.</span></p>
+                    <p><span class="en">For reporting, we created a unified data layer that pulled spend, impression, click, and conversion data from every active platform and connected it to CRM pipeline data. Real-time dashboards replaced monthly spreadsheet decks.</span><span class="it">Per il reporting, abbiamo creato un layer dati unificato che raccoglieva dati di spesa, impression, click e conversioni da ogni piattaforma attiva e li collegava ai dati della pipeline CRM. Dashboard in tempo reale hanno sostituito i report mensili in fogli di calcolo.</span></p>
+                </div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">Results</span><span class="it">Risultati</span></p>
+                    <h3><span class="en">From 3 months of setup to 3 weeks, and clarity on every dollar.</span><span class="it">Da 3 mesi di setup a 3 settimane, e chiarezza su ogni euro.</span></h3>
+                    <div class="stats-row">
+                        <div class="stat-item"><div class="stat-number"><em>78%</em></div><div class="stat-label"><span class="en">Faster campaign<br>launch time</span><span class="it">Lancio campagne<br>pi&ugrave; veloce</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>3.4x</em></div><div class="stat-label"><span class="en">Improvement in<br>ROAS visibility</span><span class="it">Miglioramento<br>visibilit&agrave; ROAS</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>120</em></div><div class="stat-label"><span class="en">Hours per month<br>saved on reporting</span><span class="it">Ore al mese<br>risparmiate sul reporting</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>41%</em></div><div class="stat-label"><span class="en">Increase in<br>attributed pipeline</span><span class="it">Aumento della<br>pipeline attribuita</span></div></div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
 
-        <!-- DENTSU / MICROSOFT -->
+        <!-- DENTSU x MICROSOFT -->
         <div class="case-card" onclick="this.classList.toggle('open')">
             <div class="case-card-header">
-                <div class="case-card-left">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmlld0JveD0iMCAwIDQwMi4wMDAwMDAgODUuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+Cgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCw4NS4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiCmZpbGw9IiMwMDAwMDAiIHN0cm9rZT0ibm9uZSI+CjxwYXRoIGQ9Ik00MzAgNzgxIGwwIC02OCAtOTYgLTYgYy0xNTggLTkgLTI0MCAtNjAgLTI5NyAtMTg1IC0xOSAtNDAgLTIyIC02NQotMjIgLTE2NyAwIC0xMDkgMiAtMTI1IDI3IC0xNzcgNTcgLTEyMiAxNTAgLTE3NSAyODcgLTE2NCA0MiAzIDEyMyA3IDE4MSA5CmwxMDUgMiAzIDQxMyAyIDQxMiAtOTUgMCAtOTUgMCAwIC02OXogbTAgLTQwMSBjMCAtMjA3IDIgLTIwNCAtMTAxIC0yMDQgLTEwMQotMSAtMTQyIDUxIC0xNDIgMTgwIC0xIDE0MSA1NyAxOTcgMjExIDIwMyBsMzIgMSAwIC0xODB6Ii8+CjxwYXRoIGQ9Ik0yMjMyIDUxMyBjNSAtMzUyIDcgLTM3NCA1MSAtNDM3IDQyIC02MCAxNjYgLTgzIDI5NyAtNTUgbDUwIDExIDAKODUgYzAgODQgMCA4NSAtMjIgNzkgLTEzIC00IC01MyAtOSAtODkgLTEzIC05NiAtOCAtOTkgLTMgLTk5IDIwNSBsMCAxNjQgMTA1Ci00IDEwNSAtNCAwIDgzIDAgODMgLTEwNSAwIC0xMDUgMCAwIDcwIDAgNzAgLTk2IDAgLTk2IDAgNCAtMzM3eiIvPgo8cGF0aCBkPSJNMTAwMCA3MjAgYy0xMDggLTE5IC0xODkgLTgxIC0yMzYgLTE4MyAtMjcgLTU3IC0yOSAtNzEgLTI5IC0xNzcgMAotMTA2IDIgLTEyMCAyOCAtMTcyIDYyIC0xMjcgMTgwIC0xODUgMzU2IC0xNzUgNjUgMyAxMTcgMTIgMTYxIDI4IGw2NSAyNCAzCjg3IDMgODcgLTU0IC0yNCBjLTExMyAtNDkgLTI1MiAtNTggLTMwNSAtMTggLTMxIDIzIC01OCA2MCAtNjcgOTEgbC02IDIyIDIyMgowIDIyMiAwIC02IDk4IGMtNiAxMjIgLTI3IDE4MCAtODMgMjM2IC02MyA2NCAtMTcyIDk0IC0yNzQgNzZ6IG0xMDQgLTE2NCBjMzYKLTE1IDY2IC01MCA2NiAtNzggMCAtMTYgLTEyIC0xOCAtMTIwIC0xOCAtMTM0IDAgLTE0MCA0IC05NCA1OSAyMyAyNyA2NCA0NwoxMDIgNTAgNyAxIDI4IC01IDQ2IC0xM3oiLz4KPHBhdGggZD0iTTE3NTYgNzEzIGMtNCAtNCAtNjMgLTYgLTEzMiAtNSBsLTEyNCAzIDAgLTM0NSAwIC0zNDYgOTAgMCA5MCAwIDAKMjU2IDAgMjU1IDM3IDE2IGM1MCAyMSAxMjcgMTMgMTU2IC0xNiAyMSAtMjEgMjIgLTMxIDI1IC0yNjcgbDMgLTI0NSA5MiAzIDkyCjMgMCAyNTUgYzAgMjIyIC0yIDI2MSAtMTggMzAyIC0yMiA1NiAtODEgMTEzIC0xMzQgMTI3IC00MyAxMiAtMTY2IDE1IC0xNzcgNHoiLz4KPHBhdGggZD0iTTI5MTEgNjk4IGMtMTU0IC01OSAtMjA0IC0yNDcgLTkxIC0zNDEgNDEgLTM1IDc5IC01MSAxNzEgLTcxIDEzMQotMjkgMTYzIC01MyAxMTkgLTg4IC0zOSAtMzEgLTE4OSAtMTggLTMwMiAyNyBsLTM4IDE1IDAgLTg0IGMwIC01NSA0IC04NyAxMwotOTQgMzAgLTI1IDE1MiAtNTIgMjMxIC01MiAxOTYgMCAzMDEgODMgMzAxIDIzNSAwIDExMyAtNjIgMTcwIC0yMjMgMjA1IC00OQoxMSAtMTAyIDI0IC0xMTYgMzAgLTMxIDExIC0zNSA0NSAtNyA2MCA0MyAyMyAxOTkgNSAzMDQgLTM1IDE1IC02IDE3IDEgMTcgNzMKMCA1MSAtNCA4MyAtMTIgOTAgLTcgNiAtNDEgMjAgLTc1IDMxIC04NSAyOSAtMjE3IDI4IC0yOTIgLTF6Ii8+CjxwYXRoIGQ9Ik0zNDM0IDY5NiBjLTMgLTkgLTQgLTEyNyAtMiAtMjYzIDMgLTIyNiA1IC0yNTIgMjUgLTI5MyAzNyAtODEgODcKLTExNyAxODAgLTEyOSAzMCAtNSA3OCAtNCAxMDYgMiAyOSA1IDEwMyA4IDE2NSA3IGwxMTIgLTIgMCAzNDYgMCAzNDYgLTkwIDAKLTkwIDAgMCAtMjU0IGMwIC0yOTIgNSAtMjc4IC05NCAtMjg0IC01NSAtNCAtNjYgLTEgLTkyIDIxIGwtMjkgMjUgLTUgMjQ0IC01CjI0MyAtODggMyBjLTcxIDIgLTg4IDAgLTkzIC0xMnoiLz4KPC9nPgo8L3N2Zz4=" alt="Dentsu" class="case-card-logo dentsu">
-                    <p class="case-card-client" style="margin-top:-6px">× Microsoft</p>
-                    <h2 class="case-card-title">One data model to rule <em>every platform.</em></h2>
+                <div>
+                    <div class="case-card-logo-row">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmlld0JveD0iMCAwIDQwMi4wMDAwMDAgODUuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+Cgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCw4NS4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiCmZpbGw9IiMwMDAwMDAiIHN0cm9rZT0ibm9uZSI+CjxwYXRoIGQ9Ik00MzAgNzgxIGwwIC02OCAtOTYgLTYgYy0xNTggLTkgLTI0MCAtNjAgLTI5NyAtMTg1IC0xOSAtNDAgLTIyIC02NQotMjIgLTE2NyAwIC0xMDkgMiAtMTI1IDI3IC0xNzcgNTcgLTEyMiAxNTAgLTE3NSAyODcgLTE2NCA0MiAzIDEyMyA3IDE4MSA5CmwxMDUgMiAzIDQxMyAyIDQxMiAtOTUgMCAtOTUgMCAwIC02OXogbTAgLTQwMSBjMCAtMjA3IDIgLTIwNCAtMTAxIC0yMDQgLTEwMQotMSAtMTQyIDUxIC0xNDIgMTgwIC0xIDE0MSA1NyAxOTcgMjExIDIwMyBsMzIgMSAwIC0xODB6Ii8+CjxwYXRoIGQ9Ik0yMjMyIDUxMyBjNSAtMzUyIDcgLTM3NCA1MSAtNDM3IDQyIC02MCAxNjYgLTgzIDI5NyAtNTUgbDUwIDExIDAKODUgYzAgODQgMCA4NSAtMjIgNzkgLTEzIC00IC01MyAtOSAtODkgLTEzIC05NiAtOCAtOTkgLTMgLTk5IDIwNSBsMCAxNjQgMTA1Ci00IDEwNSAtNCAwIDgzIDAgODMgLTEwNSAwIC0xMDUgMCAwIDcwIDAgNzAgLTk2IDAgLTk2IDAgNCAtMzM3eiIvPgo8cGF0aCBkPSJNMTAwMCA3MjAgYy0xMDggLTE5IC0xODkgLTgxIC0yMzYgLTE4MyAtMjcgLTU3IC0yOSAtNzEgLTI5IC0xNzcgMAotMTA2IDIgLTEyMCAyOCAtMTcyIDYyIC0xMjcgMTgwIC0xODUgMzU2IC0xNzUgNjUgMyAxMTcgMTIgMTYxIDI4IGw2NSAyNCAzCjg3IDMgODcgLTU0IC0yNCBjLTExMyAtNDkgLTI1MiAtNTggLTMwNSAtMTggLTMxIDIzIC01OCA2MCAtNjcgOTEgbC02IDIyIDIyMgowIDIyMiAwIC02IDk4IGMtNiAxMjIgLTI3IDE4MCAtODMgMjM2IC02MyA2NCAtMTcyIDk0IC0yNzQgNzZ6IG0xMDQgLTE2NCBjMzYKLTE1IDY2IC01MCA2NiAtNzggMCAtMTYgLTEyIC0xOCAtMTIwIC0xOCAtMTM0IDAgLTE0MCA0IC05NCA1OSAyMyAyNyA2NCA0NwoxMDIgNTAgNyAxIDI4IC01IDQ2IC0xM3oiLz4KPHBhdGggZD0iTTE3NTYgNzEzIGMtNCAtNCAtNjMgLTYgLTEzMiAtNSBsLTEyNCAzIDAgLTM0NSAwIC0zNDYgOTAgMCA5MCAwIDAKMjU2IDAgMjU1IDM3IDE2IGM1MCAyMSAxMjcgMTMgMTU2IC0xNiAyMSAtMjEgMjIgLTMxIDI1IC0yNjcgbDMgLTI0NSA5MiAzIDkyCjMgMCAyNTUgYzAgMjIyIC0yIDI2MSAtMTggMzAyIC0yMiA1NiAtODEgMTEzIC0xMzQgMTI3IC00MyAxMiAtMTY2IDE1IC0xNzcgNHoiLz4KPHBhdGggZD0iTTI5MTEgNjk4IGMtMTU0IC01OSAtMjA0IC0yNDcgLTkxIC0zNDEgNDEgLTM1IDc5IC01MSAxNzEgLTcxIDEzMQotMjkgMTYzIC01MyAxMTkgLTg4IC0zOSAtMzEgLTE4OSAtMTggLTMwMiAyNyBsLTM4IDE1IDAgLTg0IGMwIC01NSA0IC04NyAxMwotOTQgMzAgLTI1IDE1MiAtNTIgMjMxIC01MiAxOTYgMCAzMDEgODMgMzAxIDIzNSAwIDExMyAtNjIgMTcwIC0yMjMgMjA1IC00OQoxMSAtMTAyIDI0IC0xMTYgMzAgLTMxIDExIC0zNSA0NSAtNyA2MCA0MyAyMyAxOTkgNSAzMDQgLTM1IDE1IC02IDE3IDEgMTcgNzMKMCA1MSAtNCA4MyAtMTIgOTAgLTcgNiAtNDEgMjAgLTc1IDMxIC04NSAyOSAtMjE3IDI4IC0yOTIgLTF6Ii8+CjxwYXRoIGQ9Ik0zNDM0IDY5NiBjLTMgLTkgLTQgLTEyNyAtMiAtMjYzIDMgLTIyNiA1IC0yNTIgMjUgLTI5MyAzNyAtODEgODcKLTExNyAxODAgLTEyOSAzMCAtNSA3OCAtNCAxMDYgMiAyOSA1IDEwMyA4IDE2NSA3IGwxMTIgLTIgMCAzNDYgMCAzNDYgLTkwIDAKLTkwIDAgMCAtMjU0IGMwIC0yOTIgNSAtMjc4IC05NCAtMjg0IC01NSAtNCAtNjYgLTEgLTkyIDIxIGwtMjkgMjUgLTUgMjQ0IC01CjI0MyAtODggMyBjLTcxIDIgLTg4IDAgLTkzIC0xMnoiLz4KPC9nPgo8L3N2Zz4=" alt="Dentsu" class="case-card-logo dentsu" style="margin-bottom:0">
+                        <span class="x-symbol">&times;</span>
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgICB2aWV3Qm94PSIwIDAgODU5IDE4NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxuczpzZXJpZj0iaHR0cDovL3d3dy5zZXJpZi5jb20vIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjI7Ij4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsLTE4MiwtMTY0LjEyMDMxMykiPgogICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDAuMDY3MTA5LDAsMCwtMC4wNjcxMDksMTgyLDQ3MC44MTAxNTYpIj4KICAgICAgICAgICAgPHJlY3QgeD0iMCIgeT0iMzI3MCIgd2lkdGg9IjEzMDAiIGhlaWdodD0iMTMwMCIgc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgICAgICA8cGF0aCBkPSJNMTQzNyw0NTYzQzE0MzMsNDU2MCAxNDMwLDQyNjcgMTQzMCwzOTEzTDE0MzAsMzI3MEwyNzMwLDMyNzBMMjczMCw0NTcwTDIwODcsNDU3MEMxNzMzLDQ1NzAgMTQ0MCw0NTY3IDE0MzcsNDU2M1oiIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTExODcwLDQxMzBDMTE3NjUsNDEwNyAxMTY1NCw0MDI5IDExNjA3LDM5NDNDMTE1NjYsMzg2NyAxMTU1MCwzNzg5IDExNTUwLDM2NjhMMTE1NTAsMzU2MUwxMTQ1MywzNTU4TDExMzU1LDM1NTVMMTEzNTIsMzQ0M0wxMTM0OSwzMzMwTDExNTUwLDMzMzBMMTE1NTAsMjM4MEwxMTgzMCwyMzgwTDExODMwLDMzMzBMMTIyNDAsMzMzMEwxMjI0MCwzMDI4QzEyMjQxLDI2NjcgMTIyNDgsMjU5OSAxMjI5MiwyNTEwQzEyMzI5LDI0MzggMTIzODcsMjM5MCAxMjQ2MywyMzY5QzEyNTI3LDIzNTIgMTI2NjYsMjM1NSAxMjczOCwyMzc1TDEyODAwLDIzOTNMMTI4MDAsMjYxN0wxMjc0MywyNTk4QzEyNjUxLDI1NjcgMTI1NzksMjU4NiAxMjU0MywyNjUzQzEyNTI3LDI2ODEgMTI1MjUsMjcyMiAxMjUyMiwzMDA4TDEyNTE5LDMzMzBMMTI4MDAsMzMzMEwxMjgwMCwzNTYwTDEyNTIwLDM1NjBMMTI1MjAsMzkwMkwxMjQ5MywzODk1QzEyNDc3LDM4OTIgMTI0MTQsMzg3MyAxMjM1MywzODU0TDEyMjQwLDM4MTlMMTIyNDAsMzU1NUwxMTgyOCwzNTYxTDExODMxLDM2NzhDMTE4MzUsMzgwNiAxMTg0OCwzODQzIDExOTAyLDM4ODNDMTE5MzksMzkxMCAxMjAyNSwzOTE3IDEyMDg0LDM4OTdMMTIxMzAsMzg4MUwxMjEzMCw0MDAwQzEyMTMwLDQxMDEgMTIxMjgsNDExOSAxMjExMyw0MTI0QzEyMDgzLDQxMzYgMTE5MTYsNDEzOSAxMTg3MCw0MTMwWiIgc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNTY0NCw0MDMxQzU1OTIsMzk5OSA1NTY3LDM5NTUgNTU2NywzODk0QzU1NjcsMzc5NiA1NjQxLDM3MzMgNTc0OCwzNzQyQzU4MzksMzc1MCA1ODk1LDM4MDggNTg5NSwzODk1QzU4OTUsMzk1NSA1ODc1LDM5OTAgNTgyMCw0MDI4QzU3NzcsNDA1NyA1Njg5LDQwNTkgNTY0NCw0MDMxWiIgc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgICAgICA8cGF0aCBkPSJNMzU1MCw0MDIwTDM1NTAsMjM4MEwzODIwLDIzODBMMzgxOCwzMDEwQzM4MTYsMzM1NyAzODE4LDM2NDAgMzgyMSwzNjQwQzM4MjQsMzY0MCAzOTQwLDMzNTYgNDA4MCwzMDEwTDQzMzQsMjM3OUw0NTM0LDIzODVMNDc4MSwzMDA4QzQ5MTcsMzM1MSA1MDMxLDM2MzQgNTAzNCwzNjM3QzUwMzcsMzY0MSA1MDQwLDMzNTkgNTA0MCwzMDEyTDUwNDAsMjM4MEw1MzIwLDIzODBMNTMyMCw0MDIwTDQ5MzQsNDAyMEw0NzA1LDM0NThDNDU3OSwzMTQ4IDQ0NjcsMjg3NSA0NDU3LDI4NTFMNDQzNywyODA2TDQzNTAsMzAyNkM0MzAyLDMxNDYgNDE5NCwzNDE5IDQxMTAsMzYzM0wzOTU3LDQwMjBMMzU1MCw0MDIwWiIgc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNjUyMCwzNTY1QzYzMTcsMzUxOSA2MTU4LDMzNzQgNjA5MCwzMTcwQzYwNTksMzA4MCA2MDUxLDI4ODMgNjA3NCwyNzg2QzYxMTAsMjYzNSA2MjE5LDI0ODkgNjM0NSwyNDIzQzY1MDEsMjM0MiA2NzM0LDIzMzQgNjkwNywyNDAyTDY5NjUsMjQyNUw2OTcwLDI1NTNDNjk3MywyNjIzIDY5NzQsMjY4MCA2OTczLDI2ODBDNjk3MiwyNjgwIDY5NDIsMjY2NCA2OTA2LDI2NDVDNjczOSwyNTUyIDY1NTIsMjU2OCA2NDQzLDI2ODNDNjM2MSwyNzY5IDYzMjksMjg5MyA2MzUwLDMwMzlDNjM3MCwzMTc4IDY0NTAsMzI4NiA2NTY2LDMzMjlDNjY3NSwzMzcwIDY4MzAsMzM1MSA2OTMwLDMyODNDNjk0OSwzMjcxIDY5NjcsMzI2MCA2OTcwLDMyNjBDNjk3MywzMjYwIDY5NzQsMzMyMCA2OTcyLDMzOTRMNjk2OSwzNTI4TDY5MDIsMzU1MEM2ODE1LDM1NzkgNjYxOCwzNTg3IDY1MjAsMzU2NVoiIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTc3MTAsMzU2OUM3NjEyLDM1NTUgNzUzNSwzNDk4IDc0ODYsMzQwM0w3NDYxLDMzNTVMNzQ2MCwzNDU4TDc0NjAsMzU2MUw3MzIzLDM1NThMNzE4NSwzNTU1TDcxODIsMjk2OEw3MTgwLDIzODBMNzQ1OSwyMzgwTDc0NjIsMjc0M0w3NDY1LDMxMDVMNzQ5MywzMTY1Qzc1MzcsMzI1OCA3NTg4LDMzMDUgNzY2NCwzMzE5Qzc3MTUsMzMyOCA3Nzk4LDMzMTcgNzg0MiwzMjk0TDc4NzAsMzI3OUw3ODcwLDM0MTRDNzg3MCwzNTExIDc4NjYsMzU1MSA3ODU4LDM1NTdDNzgzNywzNTY5IDc3NTgsMzU3NiA3NzEwLDM1NjlaIiBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04MzMxLDM1NjVDODExNCwzNTE2IDc5NjAsMzM2NCA3OTA1LDMxNDVDNzg4MiwzMDU0IDc4ODEsMjg3MSA3OTA0LDI3NzZDNzk1MSwyNTc3IDgxMDEsMjQyNiA4MzAyLDIzNzNDODM4OCwyMzUxIDg1NjMsMjM1MSA4NjU1LDIzNzVDODgzNCwyNDIwIDg5NzksMjU0NiA5MDQxLDI3MDhDOTA3NywyODA3IDkwOTMsMjkxNCA5MDg2LDMwMjVDOTA3NiwzMjA2IDkwMjgsMzMyMyA4OTI2LDM0MjZDODg2MiwzNDg5IDg4MTYsMzUxOCA4NzIwLDM1NTJDODY0NiwzNTc5IDg0MjQsMzU4NiA4MzMxLDM1NjVaTTg2MjUsMzMyNkM4NjkyLDMyOTYgODc1MiwzMjI2IDg3NzYsMzE1M0M4NzkxLDMxMDcgODc5NSwzMDY2IDg3OTUsMjk2MEM4Nzk0LDI4NDMgODc5MSwyODE3IDg3NzEsMjc2N0M4NzQyLDI2OTMgODcwMCwyNjQ2IDg2MzYsMjYxM0M4NTkyLDI1OTAgODU3MiwyNTg3IDg0OTUsMjU4N0M4Mzk2LDI1ODcgODM0MiwyNjA0IDgyODIsMjY1NEM4MTg4LDI3MzUgODE0NSwyOTI4IDgxODUsMzA5OEM4MjEzLDMyMTQgODI2NSwzMjg0IDgzNTUsMzMyNkM4NDI2LDMzNjAgODU1NCwzMzYwIDg2MjUsMzMyNloiIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTk1MTMsMzU2NUM5Mzk1LDM1MzIgOTI5MCwzNDQ5IDkyNDksMzM1N0M5MjE2LDMyODIgOTIxNiwzMTQ2IDkyNTAsMzA3NUM5MjkxLDI5OTEgOTMzNywyOTU1IDk1MTQsMjg3MEM5NjAzLDI4MjcgOTY4NCwyNzgyIDk2OTQsMjc3MUM5NzIwLDI3NDIgOTcyNywyNjY3IDk3MDYsMjYzNUM5NjQ5LDI1NDggOTQzNywyNTU3IDkyNzgsMjY1NEw5MjIwLDI2ODlMOTIyMCwyNDIwTDkyNTYsMjQwNUM5MzY3LDIzNTkgOTU4MSwyMzQ0IDk2OTgsMjM3NEM5ODI3LDI0MDcgOTkyMiwyNDc3IDk5NzAsMjU3NUM5OTkwLDI2MTcgOTk5NCwyNjQwIDk5OTQsMjcyMEM5OTk0LDI3OTggOTk5MSwyODIyIDk5NzMsMjg1NkM5OTIzLDI5NTEgOTg1OSwyOTk5IDk2NzksMzA4MEM5NTQ3LDMxMzggOTUxMSwzMTY5IDk1MDMsMzIyOUM5NDg0LDMzNjYgOTY5MSwzNDA2IDk4OTMsMzMwNEw5OTQxLDMyNzlMOTkzOCwzNDA3TDk5MzUsMzUzNEw5ODc1LDM1NTNDOTc5MywzNTc5IDk1ODYsMzU4NiA5NTEzLDM1NjVaIiBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMDU1NSwzNTYxQzEwNDE0LDM1MjYgMTAyOTEsMzQ0MSAxMDIxOSwzMzI5QzEwMTE1LDMxNjYgMTAwOTIsMjkwMCAxMDE2NSwyNzAzQzEwMjU1LDI0NjIgMTA1MTAsMjMyNCAxMDc5OSwyMzYwQzEwOTY0LDIzODAgMTEwNTQsMjQyMSAxMTE1NSwyNTI0QzExMjc3LDI2NDcgMTEzMjQsMjc3NCAxMTMyNCwyOTgwQzExMzI0LDMxODEgMTEyNzcsMzMxMyAxMTE2NywzNDI0QzExMDkzLDM0OTcgMTEwMjksMzUzMyAxMDkyNCwzNTYwQzEwODI1LDM1ODYgMTA2NTUsMzU4NiAxMDU1NSwzNTYxWk0xMDg3NiwzMzIzQzEwOTMyLDMyOTMgMTA5ODQsMzIzMyAxMTAxMSwzMTY0QzExMDMwLDMxMTQgMTEwMzQsMzA4NiAxMTAzNCwyOTc1QzExMDM1LDI3NzAgMTA5OTMsMjY3NCAxMDg3NiwyNjE1QzEwODIzLDI1ODkgMTA4MDYsMjU4NiAxMDczMSwyNTg2QzEwNjIzLDI1ODcgMTA1NTYsMjYxMyAxMDUwMCwyNjc3QzEwNDM1LDI3NTIgMTA0MTYsMjgxNCAxMDQxNSwyOTYwQzEwNDE1LDMxNjAgMTA0NjAsMzI1OCAxMDU4MiwzMzIwQzEwNjQyLDMzNTAgMTA2NDksMzM1MSAxMDc0MCwzMzQ4QzEwODEyLDMzNDUgMTA4NDUsMzMzOSAxMDg3NiwzMzIzWiIgc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNTU5MCwzNTYxTDU1OTAsMjM4MEw1ODcwLDIzODBMNTg2OCwyOTY4TDU4NjUsMzU1NUw1NzI4LDM1NThMNTU5MCwzNTYxWiIgc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgICAgICA8cmVjdCB4PSIwIiB5PSIxODMwIiB3aWR0aD0iMTMwMCIgaGVpZ2h0PSIxMzAwIiBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNDMyLDI0ODNMMTQzNSwxODM1TDIwODMsMTgzMkwyNzMwLDE4MzBMMjczMCwzMTMwTDE0MzAsMzEzMEwxNDMyLDI0ODNaIiBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K" alt="Microsoft" class="case-card-logo" style="margin-bottom:0;height:18px">
+                    </div>
+                    <h2 class="case-card-title"><span class="en">One data model to rule <em>every platform.</em></span><span class="it">Un unico modello dati per governare <em>ogni piattaforma.</em></span></h2>
                     <div class="case-card-tags">
-                        <span class="tag">Data Unification</span>
-                        <span class="tag">Taxonomy</span>
-                        <span class="tag">Ad Ops</span>
-                        <span class="tag">Reporting</span>
+                        <span class="tag"><span class="en">Data Unification</span><span class="it">Unificazione Dati</span></span>
+                        <span class="tag"><span class="en">Taxonomy</span><span class="it">Tassonomia</span></span>
+                        <span class="tag"><span class="en">Ad Ops</span><span class="it">Ad Ops</span></span>
+                        <span class="tag"><span class="en">Reporting</span><span class="it">Reporting</span></span>
                     </div>
                 </div>
-                <button class="case-card-toggle" aria-label="Expand case study">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                </button>
+                <button class="case-card-toggle" aria-label="Expand"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></button>
             </div>
-            <div class="case-card-body">
-                <div class="case-body-inner">
-                    <div class="case-divider"></div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">The Challenge</p>
-                        <h3>A fragmented data landscape across dozens of platforms and markets.</h3>
-                        <p>Dentsu managed Microsoft's media planning, buying, and reporting across multiple countries and dozens of digital platforms, search, social, programmatic, native, video. Each platform had its own naming conventions, its own dashboards, and its own way of reporting performance. Campaign data lived in siloed spreadsheets, PowerPoint decks, and platform-native UIs. There was no single view of truth, and generating a cross-platform performance report required days of manual extraction and reconciliation.</p>
-                        <p>Account teams spent enormous time on brief processing, purchase order creation, and trafficking, work that was repetitive, error-prone, and took senior strategists away from actual strategy.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">What We Did</p>
-                        <h3>Built an exclusive data model that unified every source into one truth.</h3>
-                        <p>Two designed and deployed a proprietary data model that connected campaign data from every single platform, Google Ads, Meta, DV360, LinkedIn, Twitter, programmatic DSPs, and more, into a unified, normalised data architecture. Each campaign, line item, and creative was tagged with a standardised taxonomy and a unique identifier, making cross-platform comparison instant and accurate.</p>
-                        <p>We built automated extraction pipelines that pulled data from dirty, inconsistent sources, including PowerPoint media plans and Excel billing sheets, and cleaned, mapped, and loaded them into a structured database. Ad ops teams received automated trafficking sheets with pre-populated taxonomy. Account teams submitted briefs through a structured workflow that auto-generated purchase orders and routed them for approval. Finance reconciliation became automatic.</p>
-
-                        <div class="methodology-block">
-                            <p class="methodology-block-label">Key Capabilities Delivered</p>
-                            <div class="methodology-items">
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Unified Data Model</h4>
-                                        <p>Exclusive schema connecting all platforms with unique IDs and standardised taxonomy.</p>
-                                    </div>
-                                </div>
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Dirty Source Extraction</h4>
-                                        <p>Automated parsing of PPTX media plans and Excel files into clean, database-ready structures.</p>
-                                    </div>
-                                </div>
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Trafficking & PO Automation</h4>
-                                        <p>Briefs auto-generated trafficking sheets for ad ops and routed purchase orders for approval.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">Results</p>
-                        <h3>255 working days saved annually. One source of truth across every market.</h3>
-
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <div class="stat-number"><em>255</em></div>
-                                <div class="stat-label">Working days saved<br>per year</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>90%</em></div>
-                                <div class="stat-label">Reduction in manual<br>reporting effort</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>100%</em></div>
-                                <div class="stat-label">Platform coverage<br>in unified model</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>60%</em></div>
-                                <div class="stat-label">Faster campaign<br>trafficking</div>
-                            </div>
-                        </div>
+            <div class="case-card-body"><div class="case-body-inner"><div class="case-divider"></div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">The Challenge</span><span class="it">La Sfida</span></p>
+                    <h3><span class="en">A fragmented data landscape across dozens of platforms and markets.</span><span class="it">Un panorama dati frammentato su decine di piattaforme e mercati.</span></h3>
+                    <p><span class="en">Dentsu managed Microsoft's media planning, buying, and reporting across multiple countries and dozens of digital platforms: search, social, programmatic, native, video. Each platform had its own naming conventions, its own dashboards, and its own way of reporting. Campaign data lived in siloed spreadsheets, PowerPoint decks, and platform-native UIs. There was no single source of truth.</span><span class="it">Dentsu gestiva la pianificazione media, l'acquisto e il reporting di Microsoft in pi&ugrave; paesi e su decine di piattaforme digitali: search, social, programmatic, native, video. Ogni piattaforma aveva le proprie convenzioni di naming, i propri dashboard e il proprio modo di reportare. I dati delle campagne vivevano in fogli di calcolo isolati, presentazioni PowerPoint e UI native delle piattaforme. Non esisteva un'unica fonte di verit&agrave;.</span></p>
+                </div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">What We Did</span><span class="it">Cosa Abbiamo Fatto</span></p>
+                    <h3><span class="en">Built an exclusive data model that unified every source into one truth.</span><span class="it">Costruito un modello dati esclusivo che ha unificato ogni fonte in un'unica verit&agrave;.</span></h3>
+                    <p><span class="en">Two designed a proprietary data model connecting campaign data from every platform (Google Ads, Meta, DV360, LinkedIn, Twitter, DSPs) into a unified, normalised architecture. Each campaign, line item, and creative was tagged with a standardised taxonomy and a unique identifier.</span><span class="it">Two ha progettato un modello dati proprietario che collegava i dati delle campagne da ogni piattaforma (Google Ads, Meta, DV360, LinkedIn, Twitter, DSP) in un'architettura unificata e normalizzata. Ogni campagna, line item e creativit&agrave; era taggata con una tassonomia standardizzata e un identificativo unico.</span></p>
+                    <p><span class="en">We built automated extraction pipelines that pulled data from dirty, inconsistent sources, including PowerPoint media plans and Excel billing sheets, and cleaned, mapped, and loaded them into a structured database. Ad ops teams received automated trafficking sheets. Account teams submitted briefs through structured workflows that auto-generated purchase orders.</span><span class="it">Abbiamo costruito pipeline di estrazione automatizzate che raccoglievano dati da fonti sporche e incoerenti, inclusi media plan in PowerPoint e fogli di fatturazione Excel, li pulivano, mappavano e caricavano in un database strutturato. I team ad ops ricevevano schede di trafficking automatizzate. I team account inviavano brief tramite workflow strutturati che generavano automaticamente ordini d'acquisto.</span></p>
+                </div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">Results</span><span class="it">Risultati</span></p>
+                    <h3><span class="en">255 working days saved annually. One source of truth across every market.</span><span class="it">255 giorni lavorativi risparmiati all'anno. Un'unica fonte di verit&agrave; in ogni mercato.</span></h3>
+                    <div class="stats-row">
+                        <div class="stat-item"><div class="stat-number"><em>255</em></div><div class="stat-label"><span class="en">Working days saved<br>per year</span><span class="it">Giorni lavorativi<br>risparmiati all'anno</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>90%</em></div><div class="stat-label"><span class="en">Reduction in manual<br>reporting effort</span><span class="it">Riduzione dello sforzo<br>di reporting manuale</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>100%</em></div><div class="stat-label"><span class="en">Platform coverage<br>in unified model</span><span class="it">Copertura piattaforme<br>nel modello unificato</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>60%</em></div><div class="stat-label"><span class="en">Faster campaign<br>trafficking</span><span class="it">Trafficking campagne<br>pi&ugrave; veloce</span></div></div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
 
         <!-- UNIBET -->
         <div class="case-card" onclick="this.classList.toggle('open')">
             <div class="case-card-header">
-                <div class="case-card-left">
+                <div>
                     <img src="data:image/svg+xml;base64,PCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAzODAgMTM1IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzODAgMTM1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIHN0eWxlPSJmaWxsOiMwMDAwMDA7IiBkPSJNMjUwLjI3NTQ3LDk1LjY4NTc0Yy0xMC43NTA0NCwwLTE5LjQ2NTkzLDguODAyMzgtMTkuNDY1OTMsMTkuNjYxMDcKCWMwLDEwLjg1OTgzLDguNzE1NDgsMTkuNjYxMDgsMTkuNDY1OTMsMTkuNjYxMDhjMTAuNzQ3NDIsMCwxOS40NjI5MS04LjgwMTI1LDE5LjQ2MjkxLTE5LjY2MTA4CglDMjY5LjczODM3LDEwNC40ODgxMiwyNjEuMDIyODksOTUuNjg1NzQsMjUwLjI3NTQ3LDk1LjY4NTc0eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMDAwMDAwOyIgZD0iTTI5MC40OTQwMiw5NS42ODUxOWMtMTAuNzQ5ODgsMC0xOS40NjQ4MSw4LjgwMjM4LTE5LjQ2NDgxLDE5LjY2MTA3CgljMCwxMC44NTk4Myw4LjcxNDk0LDE5LjY2MTYzLDE5LjQ2NDgxLDE5LjY2MTYzYzEwLjc0OTkxLDAsMTkuNDY1OTQtOC44MDE4LDE5LjQ2NTk0LTE5LjY2MTYzCglDMzA5Ljk1OTk2LDEwNC40ODc1NywzMDEuMjQzOTMsOTUuNjg1MTksMjkwLjQ5NDAyLDk1LjY4NTE5eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMDAwMDAwOyIgZD0iTTg5LjM5MTksOTUuNjg1NzRjLTEwLjc0NzcsMC0xOS40NjIxLDguODAyNDEtMTkuNDYyMSwxOS42NjEwNwoJYzAsMTAuODU5ODMsOC43MTQzOSwxOS42NjEwOCwxOS40NjIxLDE5LjY2MTA4YzEwLjc1MDQzLDAsMTkuNDY1MTEtOC44MDEyNSwxOS40NjUxMS0xOS42NjEwOAoJQzEwOC44NTcwMSwxMDQuNDg4MTUsMTAwLjE0MjMzLDk1LjY4NTc0LDg5LjM5MTksOTUuNjg1NzR6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiMwMDAwMDA7IiBkPSJNMTI5LjYxMjkzLDk1LjY4NTc0Yy0xMC43NTA0NCwwLTE5LjQ2NDU3LDguODAxMjUtMTkuNDY0NTcsMTkuNjU5MzkKCWMwLDEwLjg2MDM3LDguNzE0MTMsMTkuNjYyNzYsMTkuNDY0NTcsMTkuNjYyNzZjMTAuNzQ5ODksMCwxOS40NjU5My04LjgwMjM4LDE5LjQ2NTkzLTE5LjY2Mjc2CglDMTQ5LjA3ODg2LDEwNC40ODY5OSwxNDAuMzYyODIsOTUuNjg1NzQsMTI5LjYxMjkzLDk1LjY4NTc0eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMDAwMDAwOyIgZD0iTTIxMC4wNTQ5OSw5NS42ODU3NGMtMTAuNzUwNDQsMC0xOS40NjY0OSw4LjgwMjM4LTE5LjQ2NjQ5LDE5LjY1OTk0CgljMCwxMC44NTk4Myw4LjcxNjA1LDE5LjY2MjIxLDE5LjQ2NjQ5LDE5LjY2MjIxYzEwLjc0OTYyLDAsMTkuNDY0NTUtOC44MDIzOCwxOS40NjQ1NS0xOS42NjIyMQoJQzIyOS41MTk1NSwxMDQuNDg4MTIsMjIwLjgwNDYxLDk1LjY4NTc0LDIxMC4wNTQ5OSw5NS42ODU3NHoiLz4KPHBhdGggc3R5bGU9ImZpbGw6IzAwMDAwMDsiIGQ9Ik0xNjkuNzc2OTksOTUuNjg2ODRjLTEwLjc1MTU0LDAtMTkuNDY1OTQsOC44MDEyOC0xOS40NjU5NCwxOS42NTk5NwoJYzAsMTAuODYwOTIsOC43MTQ0LDE5LjY2MTA4LDE5LjQ2NTk0LDE5LjY2MTA4YzEwLjc0NzcsMCwxOS40NjMyLTguODAwMTYsMTkuNDYzMi0xOS42NjEwOAoJQzE4OS4yNDAxOSwxMDQuNDg4MTIsMTgwLjUyNDY5LDk1LjY4Njg0LDE2OS43NzY5OSw5NS42ODY4NHoiLz4KPHBhdGggc3R5bGU9ImZpbGw6IzAwMDAwMDsiIGQ9Ik0zMDkuNDQ3NDIsNTguNDI5MzNsLTMzLjgxMTU4LTAuMDMyMjVsMC4wMDQzOS0xMy4wOTExOWwxOC4wODQ4NCwwLjAyMDUyCgljMC4wMDA3MywwLDAuMDAxNDYsMCwwLjAwMjIsMGMwLjM5NzI1LDAsMC43NzkwOC0wLjE1NzU3LDEuMDYwNTUtMC40MzkwMWMwLjI4MTQzLTAuMjgwNywwLjQ0MDQ2LTAuNjYyNTUsMC40NDA0Ni0xLjA2MTI1CglsMC4wMDgwNi0xNC4xMDkyYzAuMDAwNzMtMC44MjgxOC0wLjY3MDU5LTEuNTAwMjYtMS40OTg3OC0xLjUwMTczbC0xOC4wNzQ2Mi0wLjAyMTk5bDAuMDA1ODYtMTEuMDI2NTlsMzEuNzgyOSwwLjAyMzQ1CgljMC4wMDA3MywwLDAuMDAwNzMsMCwwLjAwMTQ2LDBjMC44MjgxOSwwLDEuNDk5NTQtMC42NzA2MSwxLjUwMTAxLTEuNDk4OGwwLjAxOTA0LTE0LjEwNjI3CgljMC4wMDA3My0wLjM5ODctMC4xNTY4My0wLjc4MDU1LTAuNDM4MjYtMS4wNjE5OGMtMC4yODE0My0wLjI4MjE3LTAuNjYzMjctMC40NDA0OC0xLjA2MTI1LTAuNDQxMjFsLTUwLjU0NDIyLTAuMDQ4MzcKCWMtMC4wMDA3MywwLTAuMDAwNzMsMC0wLjAwMTQ2LDBjLTAuMzk3OTgsMC0wLjc3OTA4LDAuMTU3NTgtMS4wNjA1MywwLjQzOTAxYy0wLjI4MTQzLDAuMjgwNy0wLjQ0MDQ4LDAuNjYyNTUtMC40NDA0OCwxLjA2MDUyCglsLTAuMDYwMSw3Mi40Njg0MmMtMC4wMDA3MywwLjgyODkyLDAuNjcwNjEsMS41MDE3MiwxLjQ5OTUzLDEuNTAyNDZsNTIuNTY4NTEsMC4wNDc2NGMwLjAwMDczLDAsMC4wMDA3MywwLDAuMDAxNSwwCgljMC4zOTc5NSwwLDAuNzc5MDUtMC4xNTc1OCwxLjA2MDUyLTAuNDM5MDFjMC4yODE0My0wLjI4MTQzLDAuNDQwNDYtMC42NjI1NSwwLjQ0MDQ2LTEuMDYxMjVsMC4wMDk1Mi0xNC4xMjAyCglDMzEwLjk0NzY2LDU5LjEwMjg3LDMxMC4yNzYzNCw1OC40MzAwNywzMDkuNDQ3NDIsNTguNDI5MzN6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiMwMDAwMDA7IiBkPSJNMTMzLjQ4MDgzLDAuMDMzNDdMMTE2LjQ2Nzg2LDAuMDI1NGgtMC4wMDA3M2MtMC4zOTc5NiwwLTAuNzc5ODEsMC4xNTgzMS0xLjA2MTI1LDAuNDM5MDEKCWMtMC4yODE0MywwLjI4MTQ0LTAuNDM5NzQsMC42NjMyOC0wLjQzOTc0LDEuMDYxMjVsLTAuMDA5NTMsMzcuODEwN0w5OC40MjgwOCwwLjk0MDgxCgljLTAuMjM2NzMtMC41NTA0MS0wLjc3OTA4LTAuOTA3MzQtMS4zNzg2LTAuOTA3MzRINzUuMjAyMjRjLTAuODI4OTIsMC0xLjUwMDk5LDAuNjcyMDgtMS41MDA5OSwxLjUwMDk5bC0wLjAwMzY3LDcyLjUwOAoJYzAsMC44Mjg5MiwwLjY3MTM1LDEuNTAwOTksMS41MDAyNywxLjUwMDk5bDE3LjI0OTcxLDAuMDA1ODdjMC4wMDA3MywwLDAuMDAwNzMsMCwwLjAwMDczLDAKCWMwLjM5Nzk2LDAsMC43Nzk4MS0wLjE1ODMxLDEuMDYxMjUtMC40Mzk3NGMwLjI4MTQzLTAuMjgxNDQsMC40Mzk3NC0wLjY2MzI4LDAuNDM5NzQtMS4wNjEyNWwwLjAwNDM5LTQyLjg2MzM2bDE5LjAzNzI3LDQzLjQ1NTU1CgljMC4yMzg5MywwLjU0NTI4LDAuNzc4MzUsMC44OTc4MSwxLjM3NDIxLDAuODk4NTRsMTkuMTEzNDksMC4wMTI0NmgwLjAwMDczYzAuMzk3OTgsMCwwLjc3OTgyLTAuMTU4MzEsMS4wNjEyNS0wLjQzOTAxCgljMC4yODE0NS0wLjI4MTQzLDAuNDM5NzQtMC42NjQwMiwwLjQzOTc0LTEuMDYxOThsMC4wMDA3My03Mi41MTYwNkMxMzQuOTgxMDksMC43MDU1NCwxMzQuMzA5NzUsMC4wMzQyLDEzMy40ODA4MywwLjAzMzQ3eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMDAwMDAwOyIgZD0iTTU4Ljk2MzQ1LDAuMDMxNTFMMzkuNzk1NDYsMC4wMjU0Yy0wLjE5MDI4LDAtMC4zNzY1NSwwLjA3NzEtMC41MTA5MSwwLjIxMTA4CgljLTAuMTM2MjcsMC4xMzYyNy0wLjIxMTI3LDAuMzE2ODEtMC4yMTEyNywwLjUwODQzdjQ2LjU1MzczYzAsNS4xMDUyNi00LjE1MzI5LDkuMjU4NTUtOS4yNTgzNiw5LjI1ODU1CgljLTUuMTA1MzUsMC05LjI1ODkzLTQuMTUzMjktOS4yNTg5My05LjI1ODU1VjkuMTA2MDhsLTAuMDAwNDgsMC4wMDA3NmwtMC4wMDA0OC0yLjcyNDk3bDAuMDAwOTUtNS42MzEyNAoJYzAtMC4zOTY1OS0wLjMyMzQtMC43MTkxMy0wLjcyMDg0LTAuNzE5MTNMMC42NjcxNiwwLjAyNTRjLTAuMTkzMDUsMC0wLjM3NDY0LDAuMDc0ODEtMC41MTA5MSwwLjIxMTA4CglTLTAuMDU1MTIsMC41NTMzLTAuMDU1MTIsMC43NDQ5MXY0Ni41NTM3M2MwLDE2LjQ3MDA0LDEzLjM5OTYzLDI5Ljg2OTY2LDI5Ljg3MDA0LDI5Ljg2OTY2CgljMTYuNDcwMTMsMCwyOS44Njk0Ny0xMy4zOTk2MiwyOS44Njk0Ny0yOS44Njk2NlY2LjM4MDczbC0wLjAwMTA1LDAuMDAxMTRsMC4wMDEwNS01LjYzMTI0CglDNTkuNjg0MzksMC4zNTQwNSw1OS4zNjEsMC4wMzE1MSw1OC45NjM0NSwwLjAzMTUxeiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMDAwMDAwOyIgZD0iTTE2OS4yNzk3MSwxLjU1OTM4YzAuMDAwNzMtMC44Mjg5Mi0wLjY3MDYxLTEuNTAwOTktMS40OTk1My0xLjUwMTczTDE1MC41MDcwMiwwLjAyNTQKCWMtMC4wMDA3MywwLTAuMDAwNzMsMC0wLjAwMTQ2LDBjLTAuODI4MTksMC0xLjUwMDI3LDAuNjcxMzQtMS41MDEwMSwxLjQ5OTUzbC0wLjAxMDI1LDcyLjQ0MzUKCWMwLDAuMzk4NywwLjE1NzU4LDAuNzgwNTQsMC40MzkwMSwxLjA2MTk4YzAuMjgxNDMsMC4yODIxNywwLjY2MjU1LDAuNDQwNDgsMS4wNjEyNSwwLjQ0MDQ4bDE3LjI3NjA5LDAuMDI2MzhoMC4wMDA3MwoJYzAuMzk3OTYsMCwwLjc3OTA4LTAuMTU3NTcsMS4wNjA1Mi0wLjQzOTAxYzAuMjgyMTctMC4yODE0MywwLjQ0MDQ4LTAuNjYzMjgsMC40NDA0OC0xLjA2MTI1TDE2OS4yNzk3MSwxLjU1OTM4eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMDAwMDAwOyIgZD0iTTIzNS45NjYwMiwzNC42NjEyOGMzLjkwODQzLTMuNjU0MDUsNi4zNjU0Mi04Ljg0MDk1LDYuMzY1NDItMTQuNjEzNTEKCWMwLTExLjA1ODA3LTguOTY0MTMtMjAuMDIyMzctMjAuMDIyMi0yMC4wMjIzN2MtMC4xNDc3NywwLTAuMjkwMTYsMC4wMTg4OS0wLjQzNjU4LDAuMDIyMDZsLTkuMzg1MzEtMC4wMjIwNnYwLjAxODU1CglsLTI3LjY1NzIzLTAuMDEwNTNoLTAuMDAxMzRjLTAuODI4MzUsMC0xLjUwMDI2LDAuNjcxNDEtMS41MDA5MywxLjUwMDI2bC0wLjAzNDc2LDcyLjQ1NTEzCgljMCwwLjM5ODEyLDAuMTU3MTIsMC43Nzk4OCwwLjQzODU4LDEuMDYyMDFjMC4yODE0NiwwLjI4MTQ3LDAuNjYzODgsMC40Mzk5MiwxLjA2MjM1LDAuNDM5OTJsMjcuNjkzMzMsMC4wMDU1MnYwLjAwMWg0Ljk0ODA0CgljMC4wMDczNSwwLDAuMDE0MDUsMCwwLjAyMTM5LDBoNC40ODk0M2MxMi42MTE4MiwwLDIyLjgzNjItMTAuMjI0MDQsMjIuODM2Mi0yMi44MzYwMwoJQzI0NC43ODIzOSw0NS4zNDAxMSwyNDEuMzIzOSwzOC44NDAzMSwyMzUuOTY2MDIsMzQuNjYxMjh6IE0yMDMuMTI2NzQsMTUuMTMzMzFoMTUuMTE4OTRjMi45NzQ0NiwwLDUuMzg2NjQsMi40MTE1Miw1LjM4NjY0LDUuMzg2MwoJYzAsMi45NzQ5NS0yLjQxMjE5LDUuMzg2NDctNS4zODY2NCw1LjM4NjQ3aC0xNS4xMTg5NFYxNS4xMzMzMXogTTIxOC4wMjcwNyw1Ny41MDIxNWMtMC4wMTA3LDAtMC4wMjA3Mi0wLjAwMTUtMC4wMzE0My0wLjAwMTUKCWgtMTQuODY4OXYtMTUuNzQ5NGgxNC45MDAzM2M0LjM0OTY5LDAsNy44NzU3LDMuNTI2MDIsNy44NzU3LDcuODc1MzdDMjI1LjkwMjc3LDUzLjk3NjE0LDIyMi4zNzY3NSw1Ny41MDIxNSwyMTguMDI3MDcsNTcuNTAyMTV6IgoJLz4KPHBhdGggc3R5bGU9ImZpbGw6IzAwMDAwMDsiIGQ9Ik0zNzkuNTA3MzIsMC41ODAyMmMtMC4yODE0My0wLjI4MTQ0LTAuNjYyNTQtMC40NDA0OC0xLjA2MTI1LTAuNDQxMjFMMzIxLjc3MzUsMC4wMzM0NwoJYy0wLjAwMDczLDAtMC4wMDE0NiwwLTAuMDAyMiwwYy0wLjgyNzQ1LDAtMS40OTk1NCwwLjY3MDYxLTEuNTAxMDEsMS40OTgwNmwtMC4wMjQxNywxMy45NzcyOAoJYy0wLjAwMTQ2LDAuODI5NjUsMC42NjkxMywxLjUwMjQ2LDEuNDk4MDUsMS41MDM5M2wxNy43ODkwMywwLjAzNjY0bC0wLjA5MzgxLDU2Ljk1MzUxCgljLTAuMDAwNzMsMC4zOTc5NiwwLjE1NjgzLDAuNzc5ODEsMC40MzgyNiwxLjA2MTk4YzAuMjgwNzMsMC4yODIxNywwLjY2MjU3LDAuNDQwNDgsMS4wNjA1MiwwLjQ0MTIxbDE3LjkyNTQ4LDAuMDIzNDUKCWMwLjAwMDczLDAsMC4wMDE0NiwwLDAuMDAyMiwwYzAuODI4MTksMCwxLjQ5OTUxLTAuNjcwNjEsMS41MDA5OC0xLjQ5ODc5bDAuMDg5NDItNTYuOTUyMDNsMTcuOTYwNTQsMC4wMzUxOAoJYzAuMDAwNzMsMCwwLjAwMTQ2LDAsMC4wMDIyLDBjMC44Mjc0NSwwLDEuNDk5NTEtMC42NzA2MSwxLjUwMDk4LTEuNDk4MDZsMC4wMjQ5My0xMy45NzI4OAoJQzM3OS45NDU2MiwxLjI0NDIzLDM3OS43ODgwMiwwLjg2MjM4LDM3OS41MDczMiwwLjU4MDIyeiIvPgo8L3N2Zz4=" alt="Unibet" class="case-card-logo unibet">
-                    <h2 class="case-card-title">Performance marketing at scale, <em>fully automated.</em></h2>
+                    <h2 class="case-card-title"><span class="en">Performance marketing at scale, <em>fully automated.</em></span><span class="it">Performance marketing su scala, <em>completamente automatizzato.</em></span></h2>
                     <div class="case-card-tags">
-                        <span class="tag">Performance Marketing</span>
-                        <span class="tag">A/B Optimisation</span>
-                        <span class="tag">Real-time Dashboards</span>
+                        <span class="tag"><span class="en">Performance Marketing</span><span class="it">Performance Marketing</span></span>
+                        <span class="tag"><span class="en">A/B Optimisation</span><span class="it">Ottimizzazione A/B</span></span>
+                        <span class="tag"><span class="en">Real-time Dashboards</span><span class="it">Dashboard Real-time</span></span>
                     </div>
                 </div>
-                <button class="case-card-toggle" aria-label="Expand case study">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                </button>
+                <button class="case-card-toggle" aria-label="Expand"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></button>
             </div>
-            <div class="case-card-body">
-                <div class="case-body-inner">
-                    <div class="case-divider"></div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">The Challenge</p>
-                        <h3>High-tempo performance campaigns with zero room for error.</h3>
-                        <p>Unibet's performance marketing engine runs at extraordinary speed, hundreds of campaigns live at any time across paid search, social, and programmatic, spanning multiple regulated markets. The team needed to move fast, but campaign setup was bottlenecked by manual trafficking, inconsistent naming conventions, and fragmented reporting across platforms. Understanding true cost per acquisition, lifetime value, and ROAS by channel was taking days, not minutes.</p>
-                        <p>A/B testing was ad hoc, with no systematic way to track variants, allocate spend to winners, or learn from historical performance. Creative and media insights lived in separate silos, making optimisation reactive rather than proactive.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">What We Did</p>
-                        <h3>Built a performance automation layer from spend to optimisation.</h3>
-                        <p>Two built an end-to-end performance automation system for Unibet. At the foundation, we deployed our data extraction layer, pulling real-time spend, conversion, and revenue data from every active platform and normalising it into a unified performance model with granular taxonomy down to the creative variant level.</p>
-                        <p>On top of that, we built automated A/B optimisation workflows: the system tracked performance of creative and audience variants in real time, flagged underperformers, and surfaced recommendations for budget reallocation. Campaign setup was automated with standardised taxonomy and pre-built trafficking templates, cutting launch time dramatically. Account teams could submit briefs through a structured intake flow that auto-generated media plans, trafficking sheets, and purchase orders.</p>
-                        <p>Real-time dashboards gave the performance team instant visibility into CPA, ROAS, and LTV by channel, market, and campaign, updated hourly, not weekly.</p>
-
-                        <div class="methodology-block">
-                            <p class="methodology-block-label">Key Capabilities Delivered</p>
-                            <div class="methodology-items">
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>A/B Optimisation Engine</h4>
-                                        <p>Real-time variant tracking with automated spend reallocation to top performers.</p>
-                                    </div>
-                                </div>
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Real-time Performance</h4>
-                                        <p>Hourly-updated dashboards with CPA, ROAS, and LTV by channel, market, and campaign.</p>
-                                    </div>
-                                </div>
-                                <div class="methodology-item">
-                                    <div class="methodology-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.841m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /></svg>
-                                    </div>
-                                    <div class="methodology-item-text">
-                                        <h4>Speed to Market</h4>
-                                        <p>Automated campaign setup, taxonomy, and trafficking cut launch time by over 60%.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="case-section">
-                        <p class="case-section-label">Results</p>
-                        <h3>Performance gains across the board, more spend on winners, less on waste.</h3>
-
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <div class="stat-number"><em>34%</em></div>
-                                <div class="stat-label">Reduction in<br>cost per acquisition</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>2.6x</em></div>
-                                <div class="stat-label">Improvement<br>in blended ROAS</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>65%</em></div>
-                                <div class="stat-label">Faster campaign<br>launch times</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number"><em>4hrs</em></div>
-                                <div class="stat-label">Weekly time saved<br>on A/B analysis</div>
-                            </div>
-                        </div>
+            <div class="case-card-body"><div class="case-body-inner"><div class="case-divider"></div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">The Challenge</span><span class="it">La Sfida</span></p>
+                    <h3><span class="en">High-tempo performance campaigns with zero room for error.</span><span class="it">Campagne performance ad alto ritmo senza margine di errore.</span></h3>
+                    <p><span class="en">Unibet's performance marketing engine runs at extraordinary speed: hundreds of campaigns live at any time across paid search, social, and programmatic, spanning multiple regulated markets. Campaign setup was bottlenecked by manual trafficking and inconsistent naming conventions. Understanding true CPA, LTV, and ROAS by channel was taking days, not minutes. A/B testing was ad hoc with no systematic way to track variants or allocate spend to winners.</span><span class="it">Il motore di performance marketing di Unibet opera a velocit&agrave; straordinaria: centinaia di campagne attive in qualsiasi momento tra paid search, social e programmatic, in diversi mercati regolamentati. La configurazione delle campagne era rallentata dal trafficking manuale e da convenzioni di naming incoerenti. Comprendere il vero CPA, LTV e ROAS per canale richiedeva giorni, non minuti. Il testing A/B era occasionale, senza un modo sistematico per tracciare le varianti.</span></p>
+                </div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">What We Did</span><span class="it">Cosa Abbiamo Fatto</span></p>
+                    <h3><span class="en">Built a performance automation layer from spend to optimisation.</span><span class="it">Costruito un layer di automazione performance dalla spesa all'ottimizzazione.</span></h3>
+                    <p><span class="en">Two built an end-to-end performance automation system. We deployed our data extraction layer pulling real-time spend, conversion, and revenue data from every platform and normalising it into a unified performance model with granular taxonomy down to the creative variant level.</span><span class="it">Two ha costruito un sistema di automazione performance end-to-end. Abbiamo implementato il nostro layer di estrazione dati che raccoglie dati di spesa, conversione e ricavo in tempo reale da ogni piattaforma e li normalizza in un modello di performance unificato con tassonomia granulare fino al livello della variante creativa.</span></p>
+                    <p><span class="en">We built automated A/B optimisation workflows: the system tracked variant performance in real time, flagged underperformers, and surfaced budget reallocation recommendations. Real-time dashboards gave the team instant visibility into CPA, ROAS, and LTV by channel, market, and campaign, updated hourly.</span><span class="it">Abbiamo costruito workflow di ottimizzazione A/B automatizzati: il sistema tracciava le performance delle varianti in tempo reale, segnalava gli underperformer e suggeriva raccomandazioni di riallocazione del budget. Dashboard in tempo reale davano al team visibilit&agrave; istantanea su CPA, ROAS e LTV per canale, mercato e campagna, aggiornati ogni ora.</span></p>
+                </div>
+                <div class="case-section">
+                    <p class="case-section-label"><span class="en">Results</span><span class="it">Risultati</span></p>
+                    <h3><span class="en">Performance gains across the board: more spend on winners, less on waste.</span><span class="it">Miglioramenti delle performance a tutto campo: pi&ugrave; budget sui vincenti, meno sugli sprechi.</span></h3>
+                    <div class="stats-row">
+                        <div class="stat-item"><div class="stat-number"><em>34%</em></div><div class="stat-label"><span class="en">Reduction in cost<br>per acquisition</span><span class="it">Riduzione del costo<br>per acquisizione</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>2.6x</em></div><div class="stat-label"><span class="en">Improvement in<br>blended ROAS</span><span class="it">Miglioramento del<br>ROAS blended</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>65%</em></div><div class="stat-label"><span class="en">Faster campaign<br>launch times</span><span class="it">Lancio campagne<br>pi&ugrave; veloce</span></div></div>
+                        <div class="stat-item"><div class="stat-number"><em>4hrs</em></div><div class="stat-label"><span class="en">Weekly time saved<br>on A/B analysis</span><span class="it">Tempo settimanale<br>risparmiato su analisi A/B</span></div></div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
-
     </section>
 
-    <!-- WHAT WE AUTOMATE -->
     <section class="what-we-automated">
         <div class="container">
-            <p class="section-label">Beyond the case studies</p>
-            <h2 class="section-title">The things we <em>automate.</em></h2>
-
+            <p class="section-label"><span class="en">Beyond the case studies</span><span class="it">Oltre i casi studio</span></p>
+            <h2 class="section-title"><span class="en">The things we <em>automate.</em></span><span class="it">Le cose che <em>automatizziamo.</em></span></h2>
             <div class="automation-grid">
-                <div class="automation-item">
-                    <div class="automation-num">01</div>
-                    <h3>Brief Intake & Routing</h3>
-                    <p>Account teams submit structured briefs that auto-generate campaign plans, media specs, and purchase orders, eliminating back-and-forth emails and version chaos.</p>
-                </div>
-                <div class="automation-item">
-                    <div class="automation-num">02</div>
-                    <h3>Purchase Order Automation</h3>
-                    <p>POs are auto-created from approved briefs, routed through finance approval workflows, and reconciled against actual spend, closing the loop from plan to payment.</p>
-                </div>
-                <div class="automation-item">
-                    <div class="automation-num">03</div>
-                    <h3>Ad Ops Trafficking</h3>
-                    <p>Trafficking sheets are pre-populated with standardised taxonomy, unique campaign IDs, and platform-specific formatting, so ad ops can go live faster with fewer errors.</p>
-                </div>
-                <div class="automation-item">
-                    <div class="automation-num">04</div>
-                    <h3>Taxonomy & Naming Conventions</h3>
-                    <p>We enforce consistent naming across every platform, market, and team, powering accurate cross-platform reporting and making historical data actually usable.</p>
-                </div>
-                <div class="automation-item">
-                    <div class="automation-num">05</div>
-                    <h3>Dirty Source Extraction</h3>
-                    <p>Data trapped in PowerPoint decks, PDFs, and messy spreadsheets is parsed, cleaned, and loaded into structured databases with unique IDs, ready for analysis.</p>
-                </div>
-                <div class="automation-item">
-                    <div class="automation-num">06</div>
-                    <h3>A/B Optimisation</h3>
-                    <p>Automated variant tracking, statistical significance detection, and budget reallocation recommendations, turning A/B testing from ad hoc to systematic.</p>
-                </div>
+                <div class="automation-item"><div class="automation-num">01</div><h3><span class="en">Brief Intake &amp; Routing</span><span class="it">Acquisizione &amp; Instradamento Brief</span></h3><p><span class="en">Account teams submit structured briefs that auto-generate campaign plans, media specs, and purchase orders, eliminating back-and-forth emails and version chaos.</span><span class="it">I team account inviano brief strutturati che generano automaticamente piani campagna, specifiche media e ordini d'acquisto, eliminando email di andata e ritorno e il caos delle versioni.</span></p></div>
+                <div class="automation-item"><div class="automation-num">02</div><h3><span class="en">Purchase Order Automation</span><span class="it">Automazione Ordini d'Acquisto</span></h3><p><span class="en">POs are auto-created from approved briefs, routed through finance approval workflows, and reconciled against actual spend, closing the loop from plan to payment.</span><span class="it">I PO vengono creati automaticamente dai brief approvati, instradati attraverso workflow di approvazione finanziaria e riconciliati con la spesa effettiva, chiudendo il ciclo dal piano al pagamento.</span></p></div>
+                <div class="automation-item"><div class="automation-num">03</div><h3><span class="en">Ad Ops Trafficking</span><span class="it">Trafficking Ad Ops</span></h3><p><span class="en">Trafficking sheets are pre-populated with standardised taxonomy, unique campaign IDs, and platform-specific formatting, so ad ops can go live faster with fewer errors.</span><span class="it">Le schede di trafficking vengono precompilate con tassonomia standardizzata, ID campagna univoci e formattazione specifica per piattaforma, cos&igrave; gli ad ops possono andare live pi&ugrave; velocemente con meno errori.</span></p></div>
+                <div class="automation-item"><div class="automation-num">04</div><h3><span class="en">Taxonomy &amp; Naming</span><span class="it">Tassonomia &amp; Naming</span></h3><p><span class="en">We enforce consistent naming across every platform, market, and team, powering accurate cross-platform reporting and making historical data actually usable.</span><span class="it">Imponiamo un naming coerente su ogni piattaforma, mercato e team, alimentando un reporting cross-platform accurato e rendendo i dati storici realmente utilizzabili.</span></p></div>
+                <div class="automation-item"><div class="automation-num">05</div><h3><span class="en">Dirty Source Extraction</span><span class="it">Estrazione da Fonti Sporche</span></h3><p><span class="en">Data trapped in PowerPoint decks, PDFs, and messy spreadsheets is parsed, cleaned, and loaded into structured databases with unique IDs, ready for analysis.</span><span class="it">I dati intrappolati in presentazioni PowerPoint, PDF e fogli di calcolo disordinati vengono analizzati, puliti e caricati in database strutturati con ID univoci, pronti per l'analisi.</span></p></div>
+                <div class="automation-item"><div class="automation-num">06</div><h3><span class="en">A/B Optimisation</span><span class="it">Ottimizzazione A/B</span></h3><p><span class="en">Automated variant tracking, statistical significance detection, and budget reallocation recommendations, turning A/B testing from ad hoc to systematic.</span><span class="it">Tracciamento automatizzato delle varianti, rilevamento della significativit&agrave; statistica e raccomandazioni di riallocazione del budget, trasformando il testing A/B da occasionale a sistematico.</span></p></div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section" id="contact">
+    <section class="cta-section">
         <div class="container">
             <div class="cta-inner">
-                <h2>Let's build something <em>smarter.</em></h2>
-                <p>Whether you're an agency managing global accounts or a brand scaling performance, we'd love to hear from you.</p>
-                <a href="mailto:hello@two.limited?subject=Meeting%20Request%20%E2%80%93%20Two%20Limited" class="cta-btn">Book a Meeting &rarr;</a>
+                <h2><span class="en">Let's build something <em>smarter.</em></span><span class="it">Costruiamo qualcosa di pi&ugrave; <em>intelligente.</em></span></h2>
+                <p><span class="en">Whether you're an agency managing global accounts or a brand scaling performance, we'd love to hear from you.</span><span class="it">Che siate un'agenzia che gestisce account globali o un brand che scala le performance, saremo felici di ascoltarvi.</span></p>
+                <a href="mailto:hello@two.limited?subject=Meeting%20Request" class="cta-btn"><span class="en">Book a Meeting &rarr;</span><span class="it">Prenota un Incontro &rarr;</span></a>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Two Limited. <a href="mailto:hello@two.limited">hello@two.limited</a></p>
-        </div>
-    </footer>
+    <footer><div class="container"><p>&copy; 2026 Two Limited. <a href="mailto:hello@two.limited">hello@two.limited</a></p></div></footer>
 
     <script>
-        // Scroll-triggered fade-in for automation items
+        function setLang(lang) {
+            if (lang === 'it') { document.body.classList.add('lang-it'); } else { document.body.classList.remove('lang-it'); }
+            document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase()); });
+        }
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
         }, { threshold: 0.15 });
-
-        document.querySelectorAll('.automation-item').forEach(item => {
-            observer.observe(item);
-        });
-
-        // Open first case study by default after a short delay
-        setTimeout(() => {
-            document.querySelector('.case-card').classList.add('open');
-        }, 600);
+        document.querySelectorAll('.automation-item').forEach(item => { observer.observe(item); });
+        setTimeout(() => { document.querySelector('.case-card').classList.add('open'); }, 600);
     </script>
-
 </body>
 </html>
